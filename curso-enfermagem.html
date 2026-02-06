@@ -1,0 +1,713 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="robots" content="index,follow" />
+
+    <title>PedIn-Enf | Plataforma progressiva para Enfermagem em Pediatria Intensiva</title>
+    <meta
+      name="description"
+      content="Perca o medo de atender crianças graves com a visão de quem está na linha de frente. Acesso imediato, assinatura anual e garantia de 7 dias."
+    />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="PedIn-Enf | Pediatria Intensiva para Enfermagem" />
+    <meta
+      property="og:description"
+      content="Plataforma progressiva com conteúdos iniciais já disponíveis, comunidade exclusiva e garantia de 7 dias."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=PedIn-Enf" />
+    <meta property="og:locale" content="pt_BR" />
+
+    <meta name="theme-color" content="#0B1220" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+    <!-- Header reutilizado -->
+    <header class="header" data-header>
+      <div class="container header__inner">
+        <a class="brand" href="index.html" aria-label="Ir para a página inicial">
+          <span class="brand__mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" role="img" aria-label="Ícone Pediatria Intensiva">
+              <path
+                d="M12 2c4.97 0 9 4.03 9 9 0 4.17-2.84 7.67-6.69 8.68-.2-.6-.56-1.16-1.08-1.63l-1.23-1.12a2.5 2.5 0 0 0-3.36 0l-1.23 1.12c-.52.47-.88 1.03-1.08 1.63C5.84 18.67 3 15.17 3 11c0-4.97 4.03-9 9-9Z"
+                fill="currentColor"
+              />
+            </svg>
+          </span>
+          <span class="brand__text">Pediatria Intensiva</span>
+        </a>
+
+        <nav class="nav" aria-label="Navegação principal">
+          <button
+            class="nav__toggle"
+            type="button"
+            aria-label="Abrir menu"
+            aria-controls="menuDrawer"
+            aria-expanded="false"
+            data-menu-button
+          >
+            <span class="nav__toggle-lines" aria-hidden="true"></span>
+          </button>
+
+          <div class="nav__links" role="navigation" aria-label="Links do menu (desktop)">
+            <a class="nav__link" href="index.html#inicio">Início</a>
+            <a class="nav__link" href="index.html#cursos">Cursos</a>
+            <a class="nav__link" href="index.html#especialistas">Especialistas</a>
+            <a class="nav__link" href="index.html#contato">Contato</a>
+          </div>
+
+          <div class="nav__actions">
+            <button class="btn btn--ghost btn--icon" type="button" data-theme-toggle aria-label="Alternar tema">
+              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+                <path d="M21 12.6A8.5 8.5 0 0 1 11.4 3a7 7 0 1 0 9.6 9.6Z" fill="currentColor" />
+              </svg>
+            </button>
+
+            <a class="btn btn--primary" href="#preco" data-scroll>Ver oferta</a>
+          </div>
+
+          <div class="drawer" id="menuDrawer" data-menu-drawer aria-hidden="true">
+            <div class="drawer__panel" role="dialog" aria-modal="true" aria-label="Menu">
+              <div class="drawer__header">
+                <span class="drawer__title">Menu</span>
+                <button class="btn btn--ghost btn--icon" type="button" data-menu-close aria-label="Fechar menu">
+                  <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+                    <path
+                      d="M18.3 5.7 12 12l6.3 6.3-1.4 1.4L10.6 13.4 4.3 19.7 2.9 18.3 9.2 12 2.9 5.7 4.3 4.3l6.3 6.3 6.3-6.3 1.4 1.4Z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </button>
+              </div>
+
+              <div class="drawer__body">
+                <a class="drawer__link" href="index.html#inicio" data-drawer-link>Início</a>
+                <a class="drawer__link" href="index.html#cursos" data-drawer-link>Cursos</a>
+                <a class="drawer__link" href="index.html#especialistas" data-drawer-link>Especialistas</a>
+                <a class="drawer__link" href="index.html#contato" data-drawer-link>Contato</a>
+
+                <div class="drawer__cta">
+                  <a class="btn btn--primary btn--block" href="#preco" data-drawer-link>Ver oferta</a>
+                  <a class="btn btn--secondary btn--block" href="#" aria-label="Ir para o KiWiFi (placeholder)">Ir para o KiWiFi</a>
+                </div>
+              </div>
+            </div>
+
+            <button class="drawer__backdrop" type="button" aria-label="Fechar menu" data-menu-close></button>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main id="conteudo">
+      <!-- Hero do curso -->
+      <section class="section hero hero--course">
+        <div class="container hero__grid">
+          <div class="hero__content reveal">
+            <p class="eyebrow">PedIn-Enf</p>
+            <h1 class="hero__title">Perca o medo de atender crianças graves pela visão de quem está na linha de frente!</h1>
+
+            <p class="hero__text">
+              Estamos iniciando a maior plataforma PROGRESSIVA de conteúdos pediátricos para você, enfermeiro, que quer
+              crescer na profissão e atuar de forma segura e assertiva.
+            </p>
+
+            <div class="badges reveal" aria-label="Benefícios rápidos">
+              <span class="badge">Garantia de 7 dias</span>
+              <span class="badge">Tira-dúvidas</span>
+              <span class="badge">Assinatura anual</span>
+              <span class="badge">Acesso imediato</span>
+            </div>
+
+            <div class="hero__actions">
+              <a class="btn btn--primary" href="#preco" data-scroll>Acessar oferta</a>
+              <a class="btn btn--secondary" href="#conteudos" data-scroll>Ver conteúdos</a>
+            </div>
+          </div>
+
+          <div class="hero__media reveal" aria-hidden="true">
+            <div class="media-card">
+              <img
+                src="https://via.placeholder.com/900x900.png?text=PedIn-Enf"
+                alt=""
+                loading="lazy"
+                width="900"
+                height="900"
+              />
+              <div class="media-card__overlay">
+                <p class="media-card__title">Progressão semanal e foco no essencial</p>
+                <p class="media-card__subtitle">Para caber em qualquer rotina.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Autoridade -->
+      <section class="section">
+        <div class="container">
+          <div class="section__head reveal">
+            <h2 class="section__title">Autoridade e acolhimento na prática</h2>
+            <p class="section__subtitle">Uma plataforma feita para quem vive a assistência e entende suas inseguranças.</p>
+          </div>
+
+          <div class="card prose reveal">
+            <p>
+              A pediatria intensiva encanta muitos profissionais da enfermagem pela complexidade e conhecimento científico
+              exigidos para performance segura e de alta qualidade. Há 18 anos trabalho com a especialidade atendendo
+              crianças nos diversos níveis de atenção. Conheço a sua angústia e posso te ajudar!
+            </p>
+            <p>
+              Além dos temas iniciais já presentes para alavancar seu conhecimento, muitos outros estão previstos com
+              enfermeiros convidados especialistas. Nenhum tema vai ficar de fora! Também temos nosso grupo exclusivo de
+              alunos para fortalecimento de networking e encontros mensais ao vivo!
+            </p>
+            <p><strong>É exatamente isso que você precisa!</strong></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Conteúdos iniciais -->
+      <section class="section section--muted" id="conteudos">
+        <div class="container">
+          <div class="section__head reveal">
+            <h2 class="section__title">Vejam nossos conteúdos INICIAIS já disponíveis para você!</h2>
+            <p class="section__subtitle">
+              Accordion acessível, com animação suave e navegação por teclado.
+            </p>
+          </div>
+
+          <!-- Accordion -->
+          <div class="accordion reveal" data-accordion>
+            <!-- IMPORTANTE:
+              Você pediu "lista de tópicos exatamente como fornecido", mas os tópicos não vieram no seu pedido.
+              Estrutura pronta: substitua os <li> placeholders pelos itens reais de cada módulo.
+            -->
+
+            <!-- Módulos 01 a 16 -->
+            <div class="accordion__item">
+              <h3 class="accordion__title">
+                <button class="accordion__trigger" type="button" aria-expanded="false" aria-controls="mod01" id="tmod01">
+                  Módulo 01
+                  <span class="accordion__icon" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="accordion__panel" id="mod01" role="region" aria-labelledby="tmod01" hidden>
+                <ul class="list">
+                  <li><!-- TODO: colar tópicos do Módulo 01 --><span class="muted">Conteúdo do módulo 01 (colar itens aqui)</span></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="accordion__item">
+              <h3 class="accordion__title">
+                <button class="accordion__trigger" type="button" aria-expanded="false" aria-controls="mod02" id="tmod02">
+                  Módulo 02
+                  <span class="accordion__icon" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="accordion__panel" id="mod02" role="region" aria-labelledby="tmod02" hidden>
+                <ul class="list">
+                  <li><!-- TODO: colar tópicos do Módulo 02 --><span class="muted">Conteúdo do módulo 02 (colar itens aqui)</span></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="accordion__item">
+              <h3 class="accordion__title">
+                <button class="accordion__trigger" type="button" aria-expanded="false" aria-controls="mod03" id="tmod03">
+                  Módulo 03
+                  <span class="accordion__icon" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="accordion__panel" id="mod03" role="region" aria-labelledby="tmod03" hidden>
+                <ul class="list">
+                  <li><!-- TODO: colar tópicos do Módulo 03 --><span class="muted">Conteúdo do módulo 03 (colar itens aqui)</span></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="accordion__item">
+              <h3 class="accordion__title">
+                <button class="accordion__trigger" type="button" aria-expanded="false" aria-controls="mod04" id="tmod04">
+                  Módulo 04
+                  <span class="accordion__icon" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="accordion__panel" id="mod04" role="region" aria-labelledby="tmod04" hidden>
+                <ul class="list">
+                  <li><!-- TODO: colar tópicos do Módulo 04 --><span class="muted">Conteúdo do módulo 04 (colar itens aqui)</span></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="accordion__item">
+              <h3 class="accordion__title">
+                <button class="accordion__trigger" type="button" aria-expanded="false" aria-controls="mod05" id="tmod05">
+                  Módulo 05
+                  <span class="accordion__icon" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="accordion__panel" id="mod05" role="region" aria-labelledby="tmod05" hidden>
+                <ul class="list">
+                  <li><!-- TODO: colar tópicos do Módulo 05 --><span class="muted">Conteúdo do módulo 05 (colar itens aqui)</span></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="accordion__item">
+              <h3 class="accordion__title">
+                <button class="accordion__trigger" type="button" aria-expanded="false" aria-controls="mod06" id="tmod06">
+                  Módulo 06
+                  <span class="accordion__icon" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="accordion__panel" id="mod06" role="region" aria-labelledby="tmod06" hidden>
+                <ul class="list">
+                  <li><!-- TODO: colar tópicos do Módulo 06 --><span class="muted">Conteúdo do módulo 06 (colar itens aqui)</span></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="accordion__item">
+              <h3 class="accordion__title">
+                <button class="accordion__trigger" type="button" aria-expanded="false" aria-controls="mod07" id="tmod07">
+                  Módulo 07
+                  <span class="accordion__icon" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="accordion__panel" id="mod07" role="region" aria-labelledby="tmod07" hidden>
+                <ul class="list">
+                  <li><!-- TODO: colar tópicos do Módulo 07 --><span class="muted">Conteúdo do módulo 07 (colar itens aqui)</span></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="accordion__item">
+              <h3 class="accordion__title">
+                <button class="accordion__trigger" type="button" aria-expanded="false" aria-controls="mod08" id="tmod08">
+                  Módulo 08
+                  <span class="accordion__icon" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="accordion__panel" id="mod08" role="region" aria-labelledby="tmod08" hidden>
+                <ul class="list">
+                  <li><!-- TODO: colar tópicos do Módulo 08 --><span class="muted">Conteúdo do módulo 08 (colar itens aqui)</span></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="accordion__item">
+              <h3 class="accordion__title">
+                <button class="accordion__trigger" type="button" aria-expanded="false" aria-controls="mod09" id="tmod09">
+                  Módulo 09
+                  <span class="accordion__icon" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="accordion__panel" id="mod09" role="region" aria-labelledby="tmod09" hidden>
+                <ul class="list">
+                  <li><!-- TODO: colar tópicos do Módulo 09 --><span class="muted">Conteúdo do módulo 09 (colar itens aqui)</span></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="accordion__item">
+              <h3 class="accordion__title">
+                <button class="accordion__trigger" type="button" aria-expanded="false" aria-controls="mod10" id="tmod10">
+                  Módulo 10
+                  <span class="accordion__icon" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="accordion__panel" id="mod10" role="region" aria-labelledby="tmod10" hidden>
+                <ul class="list">
+                  <li><!-- TODO: colar tópicos do Módulo 10 --><span class="muted">Conteúdo do módulo 10 (colar itens aqui)</span></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="accordion__item">
+              <h3 class="accordion__title">
+                <button class="accordion__trigger" type="button" aria-expanded="false" aria-controls="mod11" id="tmod11">
+                  Módulo 11
+                  <span class="accordion__icon" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="accordion__panel" id="mod11" role="region" aria-labelledby="tmod11" hidden>
+                <ul class="list">
+                  <li><!-- TODO: colar tópicos do Módulo 11 --><span class="muted">Conteúdo do módulo 11 (colar itens aqui)</span></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="accordion__item">
+              <h3 class="accordion__title">
+                <button class="accordion__trigger" type="button" aria-expanded="false" aria-controls="mod12" id="tmod12">
+                  Módulo 12
+                  <span class="accordion__icon" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="accordion__panel" id="mod12" role="region" aria-labelledby="tmod12" hidden>
+                <ul class="list">
+                  <li><!-- TODO: colar tópicos do Módulo 12 --><span class="muted">Conteúdo do módulo 12 (colar itens aqui)</span></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="accordion__item">
+              <h3 class="accordion__title">
+                <button class="accordion__trigger" type="button" aria-expanded="false" aria-controls="mod13" id="tmod13">
+                  Módulo 13
+                  <span class="accordion__icon" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="accordion__panel" id="mod13" role="region" aria-labelledby="tmod13" hidden>
+                <ul class="list">
+                  <li><!-- TODO: colar tópicos do Módulo 13 --><span class="muted">Conteúdo do módulo 13 (colar itens aqui)</span></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="accordion__item">
+              <h3 class="accordion__title">
+                <button class="accordion__trigger" type="button" aria-expanded="false" aria-controls="mod14" id="tmod14">
+                  Módulo 14
+                  <span class="accordion__icon" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="accordion__panel" id="mod14" role="region" aria-labelledby="tmod14" hidden>
+                <ul class="list">
+                  <li><!-- TODO: colar tópicos do Módulo 14 --><span class="muted">Conteúdo do módulo 14 (colar itens aqui)</span></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="accordion__item">
+              <h3 class="accordion__title">
+                <button class="accordion__trigger" type="button" aria-expanded="false" aria-controls="mod15" id="tmod15">
+                  Módulo 15
+                  <span class="accordion__icon" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="accordion__panel" id="mod15" role="region" aria-labelledby="tmod15" hidden>
+                <ul class="list">
+                  <li><!-- TODO: colar tópicos do Módulo 15 --><span class="muted">Conteúdo do módulo 15 (colar itens aqui)</span></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="accordion__item">
+              <h3 class="accordion__title">
+                <button class="accordion__trigger" type="button" aria-expanded="false" aria-controls="mod16" id="tmod16">
+                  Módulo 16
+                  <span class="accordion__icon" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="accordion__panel" id="mod16" role="region" aria-labelledby="tmod16" hidden>
+                <ul class="list">
+                  <li><!-- TODO: colar tópicos do Módulo 16 --><span class="muted">Conteúdo do módulo 16 (colar itens aqui)</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="note reveal">
+            <strong>Dica rápida:</strong> se quiser que eu monte os tópicos certinhos, é só colar aqui a lista completa dos módulos 01 a 16.
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Preço -->
+      <section class="section" id="preco">
+        <div class="container">
+          <div class="cta reveal">
+            <div class="cta__left">
+              <p class="eyebrow">Acesse agora todas as aulas.</p>
+              <h2 class="cta__title">Anual, Promoção Black PedIn</h2>
+
+              <p class="cta__price">
+                <span class="muted">De R$1.597,00 por apenas:</span>
+                <strong>R$ 797,00</strong> à vista ou parcelado em até 12x com juros <span class="muted">(Sujeito a juros da plataforma)</span>
+              </p>
+              <p class="cta__meta">Acesso ao conteúdo por um ano</p>
+
+              <div class="cta__actions">
+                <a class="btn btn--primary" href="#" aria-label="Ir para o KiWiFi (placeholder)">Ir para o KiWiFi</a>
+                <a class="btn btn--ghost" href="#" aria-label="Falar no WhatsApp (placeholder)">Tirar dúvida no WhatsApp</a>
+              </div>
+            </div>
+
+            <div class="cta__right">
+              <div class="card card--soft">
+                <h3 class="card__title">O que você recebe</h3>
+                <ul class="checklist">
+                  <li>Progressão semanal</li>
+                  <li>Conteúdo aplicável</li>
+                  <li>Comunidade exclusiva</li>
+                  <li>Encontros mensais ao vivo</li>
+                  <li>Atualizações contínuas</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Benefícios -->
+      <section class="section section--muted">
+        <div class="container">
+          <div class="section__head reveal">
+            <h2 class="section__title">Benefícios</h2>
+            <p class="section__subtitle">Tudo pensado para te dar clareza, segurança e consistência.</p>
+          </div>
+
+          <div class="grid grid--benefits">
+            <article class="card reveal"><p class="card__text">Plataforma dinâmica e com mais de 100 horas de conteúdos para você que gosta de organização.</p></article>
+            <article class="card reveal"><p class="card__text">Aulas objetivas e direcionadas à prática assistencial para caber em qualquer rotina.</p></article>
+            <article class="card reveal"><p class="card__text">Aulas novas todos os meses e de acordo com as necessidades da comunidade.</p></article>
+            <article class="card reveal"><p class="card__text">Evidências científicas robustas nacionais e internacionais, pormenorizadas nas aulas.</p></article>
+            <article class="card reveal"><p class="card__text">Artigos científicos atualizados e de alto impacto para cada tema abordado, disponibilizados na íntegra.</p></article>
+            <article class="card reveal"><p class="card__text">Vídeos em alta resolução e qualidade sonora.</p></article>
+            <article class="card reveal"><p class="card__text">Participação em comunidade exclusiva dos alunos.</p></article>
+            <article class="card reveal"><p class="card__text">Aula mensal ao vivo.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Garantia -->
+      <section class="section">
+        <div class="container">
+          <div class="guarantee reveal">
+            <div class="guarantee__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="26" height="26">
+                <path
+                  d="M12 2 4 5.5V11c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5.5L12 2Zm-1 14.2-3.2-3.2 1.4-1.4 1.8 1.8 4.8-4.8 1.4 1.4-6.2 6.2Z"
+                  fill="currentColor"
+                />
+              </svg>
+            </div>
+            <div>
+              <h2 class="section__title">Garantia de 7 dias</h2>
+              <p class="section__subtitle">
+                Nós confiamos no processo e oferecemos garantia. Você não precisa se comprometer financeiramente, caso não
+                se identificar com as aulas nos primeiros 7 dias, você poderá acionar a plataforma e nós devolveremos
+                todo o seu dinheiro.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="section section--muted" id="faq">
+        <div class="container">
+          <div class="section__head reveal">
+            <h2 class="section__title">Perguntas frequentes</h2>
+            <p class="section__subtitle">Respostas objetivas para você decidir com segurança.</p>
+          </div>
+
+          <div class="accordion reveal" data-accordion>
+            <!-- FAQ items -->
+            <div class="accordion__item">
+              <h3 class="accordion__title">
+                <button class="accordion__trigger" type="button" aria-expanded="false" aria-controls="f1" id="tf1">
+                  Como funciona o PedIn-Enf?
+                  <span class="accordion__icon" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="accordion__panel" id="f1" role="region" aria-labelledby="tf1" hidden>
+                <p class="muted">Resposta placeholder: descreva a progressão, acesso e organização das aulas.</p>
+              </div>
+            </div>
+
+            <div class="accordion__item">
+              <h3 class="accordion__title">
+                <button class="accordion__trigger" type="button" aria-expanded="false" aria-controls="f2" id="tf2">
+                  Como funciona a comunidade exclusiva dos membros?
+                  <span class="accordion__icon" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="accordion__panel" id="f2" role="region" aria-labelledby="tf2" hidden>
+                <p class="muted">Resposta placeholder: explique networking, encontros ao vivo e suporte.</p>
+              </div>
+            </div>
+
+            <div class="accordion__item">
+              <h3 class="accordion__title">
+                <button class="accordion__trigger" type="button" aria-expanded="false" aria-controls="f3" id="tf3">
+                  Em qual plataforma encontrarei o PedIn-Enf?
+                  <span class="accordion__icon" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="accordion__panel" id="f3" role="region" aria-labelledby="tf3" hidden>
+                <p class="muted">Resposta placeholder: informe a plataforma (ex: KiWiFi) e acesso.</p>
+              </div>
+            </div>
+
+            <div class="accordion__item">
+              <h3 class="accordion__title">
+                <button class="accordion__trigger" type="button" aria-expanded="false" aria-controls="f4" id="tf4">
+                  Como recebo o acesso ao curso?
+                  <span class="accordion__icon" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="accordion__panel" id="f4" role="region" aria-labelledby="tf4" hidden>
+                <p class="muted">Resposta placeholder: acesso imediato após confirmação de pagamento.</p>
+              </div>
+            </div>
+
+            <div class="accordion__item">
+              <h3 class="accordion__title">
+                <button class="accordion__trigger" type="button" aria-expanded="false" aria-controls="f5" id="tf5">
+                  Como ocorre a atualização da plataforma?
+                  <span class="accordion__icon" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="accordion__panel" id="f5" role="region" aria-labelledby="tf5" hidden>
+                <p class="muted">Resposta placeholder: novas aulas mensais e conforme necessidades da comunidade.</p>
+              </div>
+            </div>
+
+            <div class="accordion__item">
+              <h3 class="accordion__title">
+                <button class="accordion__trigger" type="button" aria-expanded="false" aria-controls="f6" id="tf6">
+                  Quem pode participar?
+                  <span class="accordion__icon" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="accordion__panel" id="f6" role="region" aria-labelledby="tf6" hidden>
+                <p class="muted">Resposta placeholder: enfermeiros e estudantes conforme critérios do curso.</p>
+              </div>
+            </div>
+
+            <div class="accordion__item">
+              <h3 class="accordion__title">
+                <button class="accordion__trigger" type="button" aria-expanded="false" aria-controls="f7" id="tf7">
+                  Como acontecem as renovações de assinatura?
+                  <span class="accordion__icon" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="accordion__panel" id="f7" role="region" aria-labelledby="tf7" hidden>
+                <p class="muted">Resposta placeholder: renovação anual via plataforma, com aviso prévio.</p>
+              </div>
+            </div>
+
+            <div class="accordion__item">
+              <h3 class="accordion__title">
+                <button class="accordion__trigger" type="button" aria-expanded="false" aria-controls="f8" id="tf8">
+                  Se eu quiser cancelar recebo meu dinheiro de volta?
+                  <span class="accordion__icon" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="accordion__panel" id="f8" role="region" aria-labelledby="tf8" hidden>
+                <p class="muted">Resposta placeholder: sim dentro da garantia de 7 dias, conforme regras da plataforma.</p>
+              </div>
+            </div>
+
+            <div class="accordion__item">
+              <h3 class="accordion__title">
+                <button class="accordion__trigger" type="button" aria-expanded="false" aria-controls="f9" id="tf9">
+                  Posso assistir as aulas pelo celular?
+                  <span class="accordion__icon" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="accordion__panel" id="f9" role="region" aria-labelledby="tf9" hidden>
+                <p class="muted">Resposta placeholder: sim, responsivo e compatível com dispositivos móveis.</p>
+              </div>
+            </div>
+
+            <div class="accordion__item">
+              <h3 class="accordion__title">
+                <button class="accordion__trigger" type="button" aria-expanded="false" aria-controls="f10" id="tf10">
+                  Onde encontro as redes sociais do PedIn?
+                  <span class="accordion__icon" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="accordion__panel" id="f10" role="region" aria-labelledby="tf10" hidden>
+                <p class="muted">Resposta placeholder: links no rodapé do site (Instagram, Telegram, YouTube, Spotify).</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="center reveal" style="margin-top: var(--space-6)">
+            <a class="btn btn--primary" href="#" aria-label="Ir para o KiWiFi (placeholder)">Ir para o KiWiFi</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer igual ao da Home -->
+    <footer class="footer">
+      <div class="container footer__grid">
+        <div class="footer__col">
+          <p class="footer__brand">Pediatria Intensiva</p>
+          <p class="footer__text">Aprimoramento profissional para atendimento seguro e baseado em evidências.</p>
+        </div>
+
+        <div class="footer__col">
+          <p class="footer__title">Redes Sociais</p>
+          <div class="footer__links">
+            <a href="#" aria-label="Instagram (placeholder)">Instagram</a>
+            <a href="#" aria-label="Telegram (placeholder)">Telegram</a>
+            <a href="#" aria-label="YouTube (placeholder)">Youtube</a>
+            <a href="#" aria-label="Spotify (placeholder)">Spotify</a>
+          </div>
+        </div>
+
+        <div class="footer__col">
+          <p class="footer__title">Contatos</p>
+          <p class="footer__text">(43) 9 9100-0508</p>
+          <p class="footer__text">ensino.pediatriaintensiva@gmail.com</p>
+        </div>
+
+        <div class="footer__col">
+          <p class="footer__title">Informações</p>
+          <p class="footer__text">© Todos os direitos reservados. 2023.</p>
+          <p class="footer__text">CNPJ: 41.527.246/0001-01</p>
+          <p class="footer__text">Desenvolvido por David Rocha</p>
+        </div>
+      </div>
+
+      <div class="container footer__bottom">
+        <small>Feito com foco em performance, acessibilidade e conversão.</small>
+      </div>
+    </footer>
+
+    <a class="fab fab--whatsapp" href="#" aria-label="Abrir WhatsApp (placeholder)" data-fab-whatsapp>
+      <span class="fab__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="22" height="22">
+          <path
+            d="M20.5 3.5A11 11 0 0 0 2.2 17.3L1 23l5.8-1.2A11 11 0 0 0 20.5 3.5ZM12 20a9 9 0 0 1-4.6-1.3l-.3-.2-3.4.7.7-3.3-.2-.3A9 9 0 1 1 12 20Z"
+            fill="currentColor"
+          />
+        </svg>
+      </span>
+      <span class="fab__label">WhatsApp</span>
+    </a>
+
+    <button class="fab fab--top" type="button" aria-label="Voltar ao topo" data-back-to-top>
+      <span class="fab__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="22" height="22">
+          <path d="M12 8 5.6 14.4l1.4 1.4L12 10.8l5 5 1.4-1.4L12 8Z" fill="currentColor" />
+        </svg>
+      </span>
+      <span class="fab__label">Topo</span>
+    </button>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>
