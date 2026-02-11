@@ -91,7 +91,7 @@ body {
   line-height: 1.6;
   color: var(--text);
   background: var(--bg); /* cor sólida */
-  position: relative;    /* cria contexto para z-index */
+  position: relative; /* cria contexto para z-index */
   min-height: 100%;
 }
 
@@ -478,8 +478,19 @@ html[data-theme="light"] .section--muted::before {
 /* -----------------------------
    Hero
 ------------------------------ */
+/* ajuste hero topo sem header:
+   Antes havia compensações (header sticky). Agora garantimos respiro consistente no topo
+   usando clamp(), sem alterar o padding padrão das outras sections. */
 .hero {
-  padding-top: calc(var(--space-8) - 10px);
+  padding-top: 0; /* mantém neutro (section controla o espaçamento) */
+}
+
+/* ajuste hero topo sem header:
+   O hero é uma section, então sobrescrevemos apenas o padding-top dela (home e cursos). */
+.section.hero,
+.section.hero.hero--course {
+  padding-top: clamp(48px, 6vw, 120px);
+  padding-bottom: var(--space-8); /* mantém harmonia do layout */
 }
 
 .hero__grid {

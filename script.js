@@ -1,13 +1,12 @@
 /* =========================================================
    Pediatria Intensiva - JS (leve, sem dependências)
-   Funcionalidades:
-   - Menu mobile: abrir e fechar (drawer)
+   Atualização: menu/header removidos do projeto
+   Mantido:
    - Smooth scroll para âncoras
    - Accordion acessível com ARIA + animação
-   - IntersectionObserver para revelar seções/cards
-   - Botão voltar ao topo (após scroll)
-   - Botão flutuante WhatsApp (já no HTML)
-   - Toggle dark mode com persistência em localStorage
+   - IntersectionObserver para reveal
+   - Botão voltar ao topo
+   - Dark mode automático/persistido (sem botão na UI)
    ========================================================= */
 
 (function () {
@@ -18,10 +17,13 @@
   const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 
   // ---------------------------
-  // Theme toggle (dark mode)
+  // Theme (dark mode) com persistência
+  // Observação: o botão de toggle foi removido junto com o header.
+  // Continua aplicando:
+  // - valor salvo no localStorage, se existir
+  // - senão, preferência do sistema
   // ---------------------------
   const THEME_KEY = "pediatria-theme";
-  const themeToggle = $("[data-theme-toggle]");
 
   function applyTheme(theme) {
     document.documentElement.setAttribute("data-theme", theme);
@@ -31,101 +33,21 @@
     const saved = localStorage.getItem(THEME_KEY);
     if (saved === "light" || saved === "dark") return saved;
 
-    // Preferência do sistema
     const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
     return prefersDark ? "dark" : "light";
   }
 
   applyTheme(getPreferredTheme());
 
-  if (themeToggle) {
-    themeToggle.addEventListener("click", () => {
-      const current = document.documentElement.getAttribute("data-theme") || "light";
-      const next = current === "dark" ? "light" : "dark";
-      applyTheme(next);
-      localStorage.setItem(THEME_KEY, next);
-    });
-  }
-
   // ---------------------------
-  // Mobile drawer menu
-  // ---------------------------
-  const menuButton = $("[data-menu-button]");
-  const menuDrawer = $("[data-menu-drawer]");
-  const menuCloseButtons = $$("[data-menu-close]");
-  const drawerLinks = $$("[data-drawer-link]");
-  let lastFocusedElement = null;
-
-  function openDrawer() {
-    if (!menuDrawer || !menuButton) return;
-    lastFocusedElement = document.activeElement;
-
-    menuDrawer.classList.add("is-open");
-    menuDrawer.setAttribute("aria-hidden", "false");
-    menuButton.setAttribute("aria-expanded", "true");
-
-    // Foco: primeiro link do drawer
-    const firstLink = $(".drawer__link", menuDrawer);
-    if (firstLink) firstLink.focus();
-
-    // Evitar scroll do body
-    document.body.style.overflow = "hidden";
-  }
-
-  function closeDrawer() {
-    if (!menuDrawer || !menuButton) return;
-
-    menuDrawer.classList.remove("is-open");
-    menuDrawer.setAttribute("aria-hidden", "true");
-    menuButton.setAttribute("aria-expanded", "false");
-
-    document.body.style.overflow = "";
-
-    if (lastFocusedElement && typeof lastFocusedElement.focus === "function") {
-      lastFocusedElement.focus();
-    }
-  }
-
-  if (menuButton) {
-    menuButton.addEventListener("click", () => {
-      const isOpen = menuDrawer && menuDrawer.classList.contains("is-open");
-      isOpen ? closeDrawer() : openDrawer();
-    });
-  }
-
-  menuCloseButtons.forEach((btn) => btn.addEventListener("click", closeDrawer));
-  drawerLinks.forEach((a) => a.addEventListener("click", closeDrawer));
-
-  // ESC fecha o drawer
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && menuDrawer && menuDrawer.classList.contains("is-open")) {
-      closeDrawer();
-    }
-  });
-
-  // Clique fora: já tem backdrop com data-menu-close, mas garante robustez
-  if (menuDrawer) {
-    menuDrawer.addEventListener("click", (e) => {
-      const target = e.target;
-      if (target && target.matches && target.matches(".drawer__backdrop")) {
-        closeDrawer();
-      }
-    });
-  }
-
-  // ---------------------------
-  // Smooth scroll
+  // Smooth scroll (sem offset de header)
   // ---------------------------
   function smoothScrollTo(hash) {
     const id = hash.replace("#", "");
     const el = document.getElementById(id);
     if (!el) return;
 
-    // Header sticky offset
-    const header = $("[data-header]");
-    const headerH = header ? header.getBoundingClientRect().height : 0;
-    const top = window.scrollY + el.getBoundingClientRect().top - (headerH + 12);
-
+    const top = window.scrollY + el.getBoundingClientRect().top - 12;
     window.scrollTo({ top, behavior: "smooth" });
   }
 
@@ -157,8 +79,6 @@
   const accordions = $$("[data-accordion]");
 
   function setPanelHeight(panel, isOpen) {
-    // Animação suave via max-height (JS calcula altura)
-    // Mantém simples, leve e sem layout thrash excessivo
     panel.style.overflow = "hidden";
     panel.style.transition = "max-height 220ms ease";
     panel.style.maxHeight = isOpen ? panel.scrollHeight + "px" : "0px";
@@ -170,7 +90,6 @@
     items.forEach((item) => {
       const trigger = $(".accordion__trigger", item);
       const panel = $(".accordion__panel", item);
-
       if (!trigger || !panel) return;
 
       // Estado inicial
@@ -182,22 +101,18 @@
         const expanded = trigger.getAttribute("aria-expanded") === "true";
         const next = !expanded;
 
-        // Toggle
         trigger.setAttribute("aria-expanded", String(next));
         item.classList.toggle("is-open", next);
-        panel.hidden = false; // necessário para medir scrollHeight
 
+        panel.hidden = false; // necessário para medir
         setPanelHeight(panel, next);
 
         if (!next) {
-          // espera a animação e volta hidden
           window.setTimeout(() => {
             panel.hidden = true;
           }, 230);
         }
       });
-
-      // Teclado: Enter/Space já funcionam em button
     });
   });
 
@@ -221,7 +136,6 @@
 
     revealEls.forEach((el) => io.observe(el));
   } else {
-    // Fallback simples
     revealEls.forEach((el) => el.classList.add("is-visible"));
   }
 
@@ -232,7 +146,6 @@
 
   function handleScroll() {
     const y = window.scrollY || document.documentElement.scrollTop;
-
     if (backToTop) {
       if (y > 650) backToTop.classList.add("is-visible");
       else backToTop.classList.remove("is-visible");

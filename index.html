@@ -39,102 +39,7 @@
     <!-- Skip link: acessibilidade -->
     <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
-    <!-- Header fixo -->
-    <header class="header" data-header>
-      <div class="container header__inner">
-        <a class="brand" href="index.html" aria-label="Ir para a página inicial">
-          <span class="brand__mark" aria-hidden="true">
-            <!-- SVG inline -->
-            <svg viewBox="0 0 24 24" width="22" height="22" role="img" aria-label="Ícone Pediatria Intensiva">
-              <path
-                d="M12 2c4.97 0 9 4.03 9 9 0 4.17-2.84 7.67-6.69 8.68-.2-.6-.56-1.16-1.08-1.63l-1.23-1.12a2.5 2.5 0 0 0-3.36 0l-1.23 1.12c-.52.47-.88 1.03-1.08 1.63C5.84 18.67 3 15.17 3 11c0-4.97 4.03-9 9-9Zm0 3.3a1 1 0 0 0-1 1V9H8.3a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1H11v2.7a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V13h2.7a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1H13V6.3a1 1 0 0 0-1-1h0Z"
-                fill="currentColor"
-              />
-            </svg>
-          </span>
-          <span class="brand__text">Pediatria Intensiva</span>
-        </a>
-
-        <nav class="nav" aria-label="Navegação principal">
-          <button
-            class="nav__toggle"
-            type="button"
-            aria-label="Abrir menu"
-            aria-controls="menuDrawer"
-            aria-expanded="false"
-            data-menu-button
-          >
-            <span class="nav__toggle-lines" aria-hidden="true"></span>
-          </button>
-
-          <div class="nav__links" role="navigation" aria-label="Links do menu (desktop)">
-            <a class="nav__link" href="#inicio">Início</a>
-            <a class="nav__link" href="#encontra">O que você encontra</a>
-            <a class="nav__link" href="#cursos">Cursos</a>
-            <a class="nav__link" href="#especialistas">Especialistas</a>
-            <a class="nav__link" href="#contato">Contato</a>
-          </div>
-
-          <div class="nav__actions">
-            <!-- Toggle dark mode -->
-            <button class="btn btn--ghost btn--icon" type="button" data-theme-toggle aria-label="Alternar tema">
-              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-                <path
-                  d="M21 12.6A8.5 8.5 0 0 1 11.4 3a7 7 0 1 0 9.6 9.6Z"
-                  fill="currentColor"
-                />
-              </svg>
-            </button>
-
-            <a class="btn btn--primary" href="#cursos">
-              Conhecer cursos
-              <span class="btn__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="18" height="18">
-                  <path
-                    d="M12 16.5 5.6 10.1l1.4-1.4L12 13.7l5-5 1.4 1.4L12 16.5Z"
-                    fill="currentColor"
-                  />
-                </svg>
-              </span>
-            </a>
-          </div>
-
-          <!-- Drawer mobile -->
-          <div class="drawer" id="menuDrawer" data-menu-drawer aria-hidden="true">
-            <div class="drawer__panel" role="dialog" aria-modal="true" aria-label="Menu">
-              <div class="drawer__header">
-                <span class="drawer__title">Menu</span>
-                <button class="btn btn--ghost btn--icon" type="button" data-menu-close aria-label="Fechar menu">
-                  <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-                    <path
-                      d="M18.3 5.7 12 12l6.3 6.3-1.4 1.4L10.6 13.4 4.3 19.7 2.9 18.3 9.2 12 2.9 5.7 4.3 4.3l6.3 6.3 6.3-6.3 1.4 1.4Z"
-                      fill="currentColor"
-                    />
-                  </svg>
-                </button>
-              </div>
-
-              <div class="drawer__body">
-                <a class="drawer__link" href="#inicio" data-drawer-link>Início</a>
-                <a class="drawer__link" href="#encontra" data-drawer-link>O que você encontra</a>
-                <a class="drawer__link" href="#cursos" data-drawer-link>Cursos</a>
-                <a class="drawer__link" href="#especialistas" data-drawer-link>Especialistas</a>
-                <a class="drawer__link" href="#contato" data-drawer-link>Contato</a>
-
-                <div class="drawer__cta">
-                  <a class="btn btn--primary btn--block" href="#cursos" data-drawer-link>Conhecer cursos</a>
-                  <a class="btn btn--secondary btn--block" href="#" aria-label="Falar no WhatsApp (placeholder)">
-                    Falar no WhatsApp
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <button class="drawer__backdrop" type="button" aria-label="Fechar menu" data-menu-close></button>
-          </div>
-        </nav>
-      </div>
-    </header>
+    <!-- Header removido por solicitação -->
 
     <main id="conteudo">
       <!-- HERO -->
@@ -158,10 +63,7 @@
                 Conhecer cursos
                 <span class="btn__icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24" width="18" height="18">
-                    <path
-                      d="M13 5h-2v6H5v2h6v6h2v-6h6v-2h-6V5Z"
-                      fill="currentColor"
-                    />
+                    <path d="M13 5h-2v6H5v2h6v6h2v-6h6v-2h-6V5Z" fill="currentColor" />
                   </svg>
                 </span>
               </a>
@@ -206,7 +108,6 @@
           </div>
 
           <div class="hero__media reveal" aria-hidden="true">
-            <!-- Placeholder visual: sem dependências externas além de fontes -->
             <div class="media-card">
               <img
                 src="https://via.placeholder.com/900x900.png?text=Pediatria+Intensiva"
@@ -235,14 +136,10 @@
           </div>
 
           <div class="grid grid--features">
-            <!-- Cards: 10 itens -->
             <article class="card feature reveal">
               <div class="feature__icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" width="18" height="18">
-                  <path
-                    d="M12 2 4 5.5V11c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5.5L12 2Z"
-                    fill="currentColor"
-                  />
+                  <path d="M12 2 4 5.5V11c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5.5L12 2Z" fill="currentColor" />
                 </svg>
               </div>
               <h3 class="card__title">Segurança definitiva</h3>
@@ -262,10 +159,7 @@
             <article class="card feature reveal">
               <div class="feature__icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" width="18" height="18">
-                  <path
-                    d="M12 3 2 9l10 6 10-6-10-6Zm0 9L2 6v12l10 6 10-6V6l-10 6Z"
-                    fill="currentColor"
-                  />
+                  <path d="M12 3 2 9l10 6 10-6-10-6Zm0 9L2 6v12l10 6 10-6V6l-10 6Z" fill="currentColor" />
                 </svg>
               </div>
               <h3 class="card__title">Aplicável em qualquer ambiente</h3>
@@ -301,10 +195,7 @@
             <article class="card feature reveal">
               <div class="feature__icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" width="18" height="18">
-                  <path
-                    d="M7 2h10v2H7V2Zm-2 4h14v2H5V6Zm2 4h10v12H7V10Z"
-                    fill="currentColor"
-                  />
+                  <path d="M7 2h10v2H7V2Zm-2 4h14v2H5V6Zm2 4h10v12H7V10Z" fill="currentColor" />
                 </svg>
               </div>
               <h3 class="card__title">Revisões aplicadas</h3>
@@ -327,10 +218,7 @@
             <article class="card feature reveal">
               <div class="feature__icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" width="18" height="18">
-                  <path
-                    d="M20 6H4V4h16v2Zm0 4H4v10h16V10Zm-10 8H6v-2h4v2Zm8 0h-6v-2h6v2Zm0-4H6v-2h12v2Z"
-                    fill="currentColor"
-                  />
+                  <path d="M20 6H4V4h16v2Zm0 4H4v10h16V10Zm-10 8H6v-2h4v2Zm8 0h-6v-2h6v2Zm0-4H6v-2h12v2Z" fill="currentColor" />
                 </svg>
               </div>
               <h3 class="card__title">Melhores resultados</h3>
