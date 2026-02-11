@@ -14,9 +14,20 @@
   --muted: rgba(255, 255, 255, 0.72);
   --border: rgba(255, 255, 255, 0.12);
 
-  --brand: #7cdefa;
-  --brand-2: #a7f3d0;
-  --danger: #fb7185;
+  /* =============================
+     PALETA ATUALIZADA (somente tokens)
+     Base:
+     Azul:    #3369E8
+     Vermelho:#D50F25
+     Amarelo: #EEB211
+     Verde:   #009925
+     ============================= */
+  --brand: #3369e8;   /* principal (azul) */
+  --brand-2: #009925; /* secundária (verde) */
+  --danger: #d50f25;  /* danger (vermelho) */
+
+  /* foco acompanha a nova brand */
+  --focus: 0 0 0 3px rgba(51, 105, 232, 0.35);
 
   --shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
   --shadow-soft: 0 12px 30px rgba(0, 0, 0, 0.28);
@@ -43,8 +54,6 @@
   --fs-3: clamp(1.25rem, 1.2rem + 0.8vw, 1.6rem);
   --fs-4: clamp(1.8rem, 1.6rem + 2vw, 2.6rem);
   --fs-5: clamp(2.1rem, 1.8rem + 2.8vw, 3.2rem);
-
-  --focus: 0 0 0 3px rgba(124, 222, 250, 0.35);
 }
 
 /* Light theme override */
@@ -56,8 +65,14 @@ html[data-theme="light"] {
   --muted: rgba(10, 18, 32, 0.70);
   --border: rgba(10, 18, 32, 0.10);
 
-  --brand: #1457ff;
-  --brand-2: #12b981;
+  /* =============================
+     PALETA ATUALIZADA (somente tokens)
+     ============================= */
+  --brand: #3369e8;   /* azul */
+  --brand-2: #009925; /* verde */
+  --danger: #d50f25;  /* vermelho */
+
+  --focus: 0 0 0 3px rgba(51, 105, 232, 0.35);
 
   --shadow: 0 18px 50px rgba(10, 18, 32, 0.16);
   --shadow-soft: 0 12px 30px rgba(10, 18, 32, 0.10);
@@ -103,10 +118,15 @@ body::before {
   z-index: -1;
   pointer-events: none;
 
-  /* Gradients premium (ajuste leve: transparent 60% para suavizar) */
+  /* =============================
+     BACKGROUND: gradiente suave (somente paleta)
+     Azul + Vermelho + Amarelo + Verde (opacidade baixa)
+     ============================= */
   background:
-    radial-gradient(1200px 600px at 20% -10%, rgba(124, 222, 250, 0.14), transparent 60%),
-    radial-gradient(900px 500px at 90% 10%, rgba(18, 185, 129, 0.10), transparent 60%),
+    radial-gradient(1200px 600px at 20% -10%, rgba(51, 105, 232, 0.14), transparent 60%),
+    radial-gradient(900px 520px at 92% 8%, rgba(213, 15, 37, 0.10), transparent 60%),
+    radial-gradient(980px 560px at 55% 78%, rgba(238, 178, 17, 0.08), transparent 60%),
+    radial-gradient(900px 520px at 8% 92%, rgba(0, 153, 37, 0.09), transparent 60%),
     linear-gradient(180deg, rgba(0, 0, 0, 0.12), transparent 40%);
 
   /* Ajuda a evitar banding e glitches de repaint (Safari/Chrome) */
@@ -117,8 +137,10 @@ body::before {
 /* Ajuste do gradient para tema claro */
 html[data-theme="light"] body::before {
   background:
-    radial-gradient(1200px 600px at 20% -10%, rgba(20, 87, 255, 0.10), transparent 62%),
-    radial-gradient(900px 500px at 90% 10%, rgba(18, 185, 129, 0.08), transparent 62%),
+    radial-gradient(1200px 600px at 20% -10%, rgba(51, 105, 232, 0.10), transparent 62%),
+    radial-gradient(900px 520px at 92% 8%, rgba(213, 15, 37, 0.08), transparent 62%),
+    radial-gradient(980px 560px at 55% 78%, rgba(238, 178, 17, 0.08), transparent 62%),
+    radial-gradient(900px 520px at 8% 92%, rgba(0, 153, 37, 0.07), transparent 62%),
     linear-gradient(180deg, rgba(10, 18, 32, 0.06), transparent 40%);
 }
 
@@ -440,11 +462,11 @@ html[data-theme="light"] .section--muted::before {
   background: linear-gradient(135deg, var(--brand), color-mix(in srgb, var(--brand) 65%, var(--brand-2)));
   color: #fff;
   border-color: transparent;
-  box-shadow: 0 10px 24px rgba(20, 87, 255, 0.18);
+  box-shadow: 0 10px 24px rgba(51, 105, 232, 0.18);
 }
 .btn--primary:hover {
   transform: translateY(-1px);
-  box-shadow: 0 14px 30px rgba(20, 87, 255, 0.22);
+  box-shadow: 0 14px 30px rgba(51, 105, 232, 0.22);
 }
 
 .btn--secondary {
@@ -743,9 +765,18 @@ html[data-theme="light"] .section--muted::before {
   border-radius: 26px;
   padding: clamp(24px, 3vw, 44px);
   border: 1px solid color-mix(in srgb, var(--brand) 24%, var(--border));
-  background: radial-gradient(700px 350px at 20% 20%, rgba(124, 222, 250, 0.16), transparent 55%),
-    radial-gradient(700px 350px at 90% 10%, rgba(18, 185, 129, 0.10), transparent 60%),
+
+  /* =============================
+     Callout: mesmo desenho, só troca a paleta
+     (azul + vermelho + amarelo + verde, suave)
+     ============================= */
+  background:
+    radial-gradient(700px 350px at 20% 20%, rgba(51, 105, 232, 0.16), transparent 55%),
+    radial-gradient(700px 350px at 92% 10%, rgba(213, 15, 37, 0.10), transparent 60%),
+    radial-gradient(700px 350px at 55% 85%, rgba(238, 178, 17, 0.08), transparent 60%),
+    radial-gradient(700px 350px at 10% 90%, rgba(0, 153, 37, 0.08), transparent 60%),
     var(--surface);
+
   box-shadow: var(--shadow-soft);
 }
 

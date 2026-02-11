@@ -111,7 +111,7 @@
           <div class="hero__media reveal" aria-hidden="true">
             <div class="media-card">
               <img
-                src="https://via.placeholder.com/900x900.png?text=Pediatria+Intensiva"
+                src="/assets/img/Arnildo+Flavia/Flávia_Arnildo (75).jpg"
                 alt=""
                 loading="lazy"
                 width="900"
@@ -362,13 +362,22 @@
 
             <article class="card specialist reveal">
               <div class="specialist__media">
-                <img
-                  src="/assets/img/Flavia (mais recentes)/TACIANAEFLÁVIA(11).jpg"
-                  alt="Foto de Flávia Lopes Gabani (placeholder)"
-                  loading="lazy"
-                  width="800"
-                  height="800"
-                />
+                <picture>
+                  <!-- quando o tema for escuro -->
+                  <source
+                    srcset="/assets/img/Flavia(mais-recentes)/TACIANAEFLÁVIA-38.jpg"
+                    media="(prefers-color-scheme: dark)"
+                  />
+
+                  <!-- fallback (claro) -->
+                  <img
+                    src="/assets/img/Flavia(mais-recentes)/TACIANAEFLÁVIA-11.jpg"
+                    alt="Foto de Flávia Lopes Gabani"
+                    loading="lazy"
+                    width="800"
+                    height="800"
+                  />
+                </picture>
               </div>
               <div class="specialist__body">
                 <h3 class="card__title">Flávia Lopes Gabani</h3>
