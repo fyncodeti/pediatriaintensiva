@@ -68,6 +68,7 @@
                 </span>
               </a>
 
+              <!-- Não coloquei target aqui pois é link placeholder (#) e não "abre nova página" -->
               <a class="btn btn--secondary" href="#" aria-label="Falar no WhatsApp (placeholder)">
                 Falar no WhatsApp
                 <span class="btn__icon" aria-hidden="true">
@@ -280,7 +281,16 @@
               </p>
 
               <div class="course__actions">
-                <a class="btn btn--primary" href="curso-enfermagem.html">Ver PedIn-Enf</a>
+                <!-- alteração: abre nova página em nova aba -->
+                <a
+                  class="btn btn--primary"
+                  href="curso-enfermagem.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Ver PedIn-Enf (abre em nova aba)"
+                >
+                  Ver PedIn-Enf
+                </a>
                 <a class="btn btn--ghost" href="#contato" data-scroll>Falar com a equipe</a>
               </div>
             </article>
@@ -302,7 +312,16 @@
               </p>
 
               <div class="course__actions">
-                <a class="btn btn--primary" href="curso-medico.html">Ver PedIn-Med</a>
+                <!-- alteração: abre nova página em nova aba -->
+                <a
+                  class="btn btn--primary"
+                  href="curso-medico.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Ver PedIn-Med (abre em nova aba)"
+                >
+                  Ver PedIn-Med
+                </a>
                 <a class="btn btn--ghost" href="#contato" data-scroll>Falar com a equipe</a>
               </div>
             </article>
@@ -322,7 +341,7 @@
             <article class="card specialist reveal">
               <div class="specialist__media">
                 <img
-                  src="https://via.placeholder.com/800x800.png?text=Especialista"
+                  src="./assets/img/Arnildo/Flávia_Arnildo (22).jpg"
                   alt="Foto de Arnildo Linck Júnior (placeholder)"
                   loading="lazy"
                   width="800"
@@ -344,7 +363,7 @@
             <article class="card specialist reveal">
               <div class="specialist__media">
                 <img
-                  src="https://via.placeholder.com/800x800.png?text=Especialista"
+                  src="/assets/img/Flavia (mais recentes)/TACIANAEFLÁVIA(11).jpg"
                   alt="Foto de Flávia Lopes Gabani (placeholder)"
                   loading="lazy"
                   width="800"
@@ -373,7 +392,10 @@
           <h2 class="callout__title">Agora é com você…</h2>
           <div class="callout__text">
             <p>O caminho para a excelência em Pediatria Intensiva está à sua frente com o PedIn.</p>
-            <p>A decisão está em suas mãos. O conhecimento, as atualizações e o aprimoramento profissional que você procura estão aqui.</p>
+            <p>
+              A decisão está em suas mãos. O conhecimento, as atualizações e o aprimoramento profissional que você
+              procura estão aqui.
+            </p>
             <p>
               Invista hoje para transformar seu amanhã. Seu próximo passo pode fazer toda a diferença na vida de seus
               pacientes. A Pediatria Intensiva espera por você.
@@ -381,6 +403,7 @@
           </div>
           <div class="callout__actions">
             <a class="btn btn--primary" href="#cursos" data-scroll>Acessar os cursos</a>
+            <!-- Não coloquei target aqui pois é link placeholder (#) e não "abre nova página" -->
             <a class="btn btn--secondary" href="#" aria-label="Falar no WhatsApp (placeholder)">Falar no WhatsApp</a>
           </div>
         </div>
@@ -412,6 +435,7 @@
                   <span>(43) 9 9100-0508</span>
                 </a>
 
+                <!-- mailto abre cliente de e-mail (normalmente fora da aba). Mantido sem target. -->
                 <a class="link-row" href="mailto:ensino.pediatriaintensiva@gmail.com" aria-label="Enviar e-mail">
                   <span class="link-row__icon" aria-hidden="true">
                     <svg viewBox="0 0 24 24" width="18" height="18">
@@ -471,8 +495,8 @@
         <div class="footer__col">
           <p class="footer__title">Informações</p>
           <p class="footer__text">© Todos os direitos reservados. 2023.</p>
-          <p class="footer__text">CNPJ: 41.527.246/0001-01</p>
-          <p class="footer__text">Desenvolvido por David Rocha</p>
+          <!-- <p class="footer__text">CNPJ: 41.527.246/0001-01</p> -->
+          <p class="footer__text">Desenvolvido por Fyncode</p>
         </div>
       </div>
 
@@ -482,6 +506,7 @@
     </footer>
 
     <!-- Botão flutuante WhatsApp -->
+    <!-- Mantido sem target pois é placeholder (#). Quando você colocar o link real do wa.me, posso adicionar target + rel. -->
     <a class="fab fab--whatsapp" href="#" aria-label="Abrir WhatsApp (placeholder)" data-fab-whatsapp>
       <span class="fab__icon" aria-hidden="true">
         <svg viewBox="0 0 24 24" width="22" height="22">
