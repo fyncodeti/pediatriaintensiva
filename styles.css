@@ -895,12 +895,81 @@ html[data-theme="light"] .section--muted::before {
 }
 
 /* Courses */
+.course {
+  padding: 0;
+  overflow: hidden;
+}
+
+.course__media {
+  position: relative;
+  overflow: hidden;
+  border-bottom: 0px;
+  padding: 22px;
+  min-height: 140px;
+  display: grid;
+  align-items: end;
+  background: var(--surface);
+}
+
+.course__media::before {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 18% 25%, rgba(255, 255, 255, 0.18), transparent 60%),
+    radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.10), transparent 62%);
+  opacity: 0.6;
+  filter: blur(1px);
+}
+
+.course__media-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.course__media-title {
+  margin: 0 0 6px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.2rem);
+  color: #fff;
+}
+
+.course__media-subtitle {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.86);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.course__media--enf {
+  background:
+    radial-gradient(800px 360px at 18% 20%, rgba(0, 153, 37, 0.34), transparent 60%),
+    radial-gradient(700px 320px at 88% 70%, rgba(51, 105, 232, 0.22), transparent 62%),
+    linear-gradient(135deg, rgba(0, 153, 37, 0.95), rgba(51, 105, 232, 0.78));
+}
+
+.course__media--med {
+  background:
+    radial-gradient(800px 360px at 18% 20%, rgba(51, 105, 232, 0.34), transparent 60%),
+    radial-gradient(700px 320px at 88% 70%, rgba(238, 178, 17, 0.18), transparent 62%),
+    linear-gradient(135deg, rgba(51, 105, 232, 0.95), rgba(0, 153, 37, 0.62));
+}
+
+.course > :not(.course__media) {
+  padding-left: var(--space-5);
+  padding-right: var(--space-5);
+}
+
 .course__top {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--space-3);
   margin-bottom: var(--space-3);
+  padding-top: var(--space-5);
 }
 
 .course__actions {
@@ -908,6 +977,7 @@ html[data-theme="light"] .section--muted::before {
   flex-wrap: wrap;
   gap: 10px;
   margin-top: var(--space-4);
+  padding-bottom: var(--space-5);
 }
 
 /* Specialists */
