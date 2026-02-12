@@ -595,6 +595,11 @@ html[data-theme="light"] .section--muted::before {
   box-shadow: var(--shadow-soft);
 }
 
+/* ajuste de enquadramento (só esta imagem): desce ~20% */
+.media-card__img--down {
+  object-position: center 14%;
+}
+
 .media-card img {
   width: 100%;
   height: auto;
