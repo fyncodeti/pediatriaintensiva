@@ -1,6 +1,7 @@
 /* =========================================================
    Pediatria Intensiva - Styles (sem frameworks)
    Objetivos: premium, responsivo, acessível, performático
+   Atualização visual: premium tech com paleta oficial
    ========================================================= */
 
 /* -----------------------------
@@ -14,23 +15,27 @@
   --muted: rgba(255, 255, 255, 0.72);
   --border: rgba(255, 255, 255, 0.12);
 
-  /* =============================
-     PALETA ATUALIZADA (somente tokens)
-     Base:
-     Azul:    #3369E8
-     Vermelho:#D50F25
-     Amarelo: #EEB211
-     Verde:   #009925
-     ============================= */
-  --brand: #3369e8;   /* principal (azul) */
-  --brand-2: #009925; /* secundária (verde) */
-  --danger: #d50f25;  /* danger (vermelho) */
+  /* Paleta oficial */
+  --brand: #3369e8;   /* azul dominante */
+  --brand-2: #009925; /* verde positivo */
+  --danger: #d50f25;  /* vermelho micro acento */
+  --warn: #eeb211;    /* amarelo destaque pontual */
 
-  /* foco acompanha a nova brand */
-  --focus: 0 0 0 3px rgba(51, 105, 232, 0.35);
+  /* Glass + profundidade */
+  --glass: color-mix(in srgb, var(--surface) 78%, transparent);
+  --glass-2: color-mix(in srgb, var(--surface-2) 72%, transparent);
 
-  --shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
-  --shadow-soft: 0 12px 30px rgba(0, 0, 0, 0.28);
+  /* Bordas e foco */
+  --border-strong: color-mix(in srgb, var(--border) 72%, transparent);
+  --focus: 0 0 0 3px rgba(51, 105, 232, 0.34);
+
+  /* Sombras mais premium */
+  --shadow: 0 18px 55px rgba(0, 0, 0, 0.52);
+  --shadow-soft: 0 14px 34px rgba(0, 0, 0, 0.28);
+
+  /* Glows controlados */
+  --glow-brand: 0 0 0 1px rgba(51, 105, 232, 0.18), 0 18px 40px rgba(51, 105, 232, 0.16);
+  --glow-green: 0 0 0 1px rgba(0, 153, 37, 0.16), 0 18px 40px rgba(0, 153, 37, 0.12);
 
   --radius: 18px;
   --radius-sm: 14px;
@@ -65,17 +70,22 @@ html[data-theme="light"] {
   --muted: rgba(10, 18, 32, 0.70);
   --border: rgba(10, 18, 32, 0.10);
 
-  /* =============================
-     PALETA ATUALIZADA (somente tokens)
-     ============================= */
-  --brand: #3369e8;   /* azul */
-  --brand-2: #009925; /* verde */
-  --danger: #d50f25;  /* vermelho */
+  --brand: #3369e8;
+  --brand-2: #009925;
+  --danger: #d50f25;
+  --warn: #eeb211;
 
-  --focus: 0 0 0 3px rgba(51, 105, 232, 0.35);
+  --glass: color-mix(in srgb, rgba(10, 18, 32, 0.04) 80%, transparent);
+  --glass-2: color-mix(in srgb, rgba(10, 18, 32, 0.06) 76%, transparent);
+
+  --border-strong: color-mix(in srgb, var(--border) 78%, transparent);
+  --focus: 0 0 0 3px rgba(51, 105, 232, 0.30);
 
   --shadow: 0 18px 50px rgba(10, 18, 32, 0.16);
   --shadow-soft: 0 12px 30px rgba(10, 18, 32, 0.10);
+
+  --glow-brand: 0 0 0 1px rgba(51, 105, 232, 0.14), 0 18px 40px rgba(51, 105, 232, 0.12);
+  --glow-green: 0 0 0 1px rgba(0, 153, 37, 0.12), 0 18px 40px rgba(0, 153, 37, 0.10);
 }
 
 /* -----------------------------
@@ -92,56 +102,92 @@ body {
   height: 100%;
 }
 
-/* ---------------------------------------------------------
-   Background global (CORREÇÃO DO "SEAM" / LINHA NO SCROLL)
-   Motivo: gradients aplicados diretamente no body podem
-   repintar e “emendar” em alturas grandes.
-   Solução: body fica com cor sólida e o gradient vai em um
-   pseudo-elemento FIXO no viewport (não reinicia no scroll).
----------------------------------------------------------- */
 body {
   margin: 0;
   font-family: var(--font-sans);
   font-size: var(--fs-1);
   line-height: 1.6;
   color: var(--text);
-  background: var(--bg); /* cor sólida */
-  position: relative; /* cria contexto para z-index */
+  background: var(--bg);
+  position: relative;
   min-height: 100%;
 }
 
-/* Gradient fixo: contínuo e sem “risco” ao rolar */
+/* ---------------------------------------------------------
+   Background global premium tech (sem emenda no scroll)
+   Luzes difusas com gradientes suaves usando a paleta
+---------------------------------------------------------- */
 body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+
+  background:
+    /* azul dominante (topo/esquerda) */
+    radial-gradient(1200px 620px at 18% -10%, rgba(51, 105, 232, 0.18), transparent 62%),
+    radial-gradient(980px 520px at 38% 18%, rgba(51, 105, 232, 0.12), transparent 62%),
+
+    /* vermelho (topo/direita) micro acento */
+    radial-gradient(860px 520px at 92% 8%, rgba(213, 15, 37, 0.07), transparent 64%),
+
+    /* amarelo (centro/baixo) destaque pontual */
+    radial-gradient(980px 560px at 56% 78%, rgba(238, 178, 17, 0.08), transparent 62%),
+
+    /* verde (baixo/esquerda) confiança */
+    radial-gradient(900px 560px at 10% 92%, rgba(0, 153, 37, 0.09), transparent 62%),
+
+    /* vinheta suave para contraste */
+    radial-gradient(1200px 900px at 50% 60%, rgba(0, 0, 0, 0.22), transparent 70%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.18), transparent 42%);
+
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+html[data-theme="light"] body::before {
+  background:
+    radial-gradient(1200px 620px at 18% -10%, rgba(51, 105, 232, 0.12), transparent 64%),
+    radial-gradient(980px 520px at 38% 18%, rgba(51, 105, 232, 0.08), transparent 64%),
+    radial-gradient(860px 520px at 92% 8%, rgba(213, 15, 37, 0.05), transparent 66%),
+    radial-gradient(980px 560px at 56% 78%, rgba(238, 178, 17, 0.08), transparent 64%),
+    radial-gradient(900px 560px at 10% 92%, rgba(0, 153, 37, 0.06), transparent 64%),
+    radial-gradient(1200px 900px at 50% 60%, rgba(10, 18, 32, 0.08), transparent 72%),
+    linear-gradient(180deg, rgba(10, 18, 32, 0.06), transparent 45%);
+}
+
+/* ---------------------------------------------------------
+   Textura sutil topográfica + micro-noise (overlay)
+---------------------------------------------------------- */
+body::after {
   content: "";
   position: fixed;
   inset: 0;
   z-index: -1;
   pointer-events: none;
 
-  /* =============================
-     BACKGROUND: gradiente suave (somente paleta)
-     Azul + Vermelho + Amarelo + Verde (opacidade baixa)
-     ============================= */
-  background:
-    radial-gradient(1200px 600px at 20% -10%, rgba(51, 105, 232, 0.14), transparent 60%),
-    radial-gradient(900px 520px at 92% 8%, rgba(213, 15, 37, 0.10), transparent 60%),
-    radial-gradient(980px 560px at 55% 78%, rgba(238, 178, 17, 0.08), transparent 60%),
-    radial-gradient(900px 520px at 8% 92%, rgba(0, 153, 37, 0.09), transparent 60%),
-    linear-gradient(180deg, rgba(0, 0, 0, 0.12), transparent 40%);
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='600' viewBox='0 0 900 600'%3E%3Cg fill='none' stroke='white' stroke-opacity='0.08' stroke-width='1'%3E%3Cpath d='M-40 120 C 80 40, 180 220, 300 140 S 520 60, 620 160 S 820 260, 980 140'/%3E%3Cpath d='M-60 220 C 90 140, 210 320, 340 240 S 560 160, 660 260 S 860 360, 1020 240'/%3E%3Cpath d='M-80 320 C 100 240, 240 420, 380 340 S 600 260, 700 360 S 900 460, 1060 340'/%3E%3Cpath d='M-100 420 C 120 340, 260 520, 420 440 S 640 360, 740 460 S 940 560, 1100 440'/%3E%3Cpath d='M-120 520 C 140 440, 280 620, 460 540 S 680 460, 780 560 S 980 660, 1140 540'/%3E%3C/g%3E%3C/svg%3E"),
+    repeating-linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.018) 0,
+      rgba(255, 255, 255, 0.018) 1px,
+      transparent 1px,
+      transparent 10px
+    );
 
-  /* Ajuda a evitar banding e glitches de repaint (Safari/Chrome) */
+  background-size: 980px 640px, 260px 260px;
+  background-position: 50% 20%, 0 0;
+  mix-blend-mode: overlay;
+  opacity: 0.22;
+
   transform: translateZ(0);
-  will-change: transform;
 }
 
-/* Ajuste do gradient para tema claro */
-html[data-theme="light"] body::before {
-  background:
-    radial-gradient(1200px 600px at 20% -10%, rgba(51, 105, 232, 0.10), transparent 62%),
-    radial-gradient(900px 520px at 92% 8%, rgba(213, 15, 37, 0.08), transparent 62%),
-    radial-gradient(980px 560px at 55% 78%, rgba(238, 178, 17, 0.08), transparent 62%),
-    radial-gradient(900px 520px at 8% 92%, rgba(0, 153, 37, 0.07), transparent 62%),
-    linear-gradient(180deg, rgba(10, 18, 32, 0.06), transparent 40%);
+html[data-theme="light"] body::after {
+  mix-blend-mode: multiply;
+  opacity: 0.18;
 }
 
 img {
@@ -192,14 +238,10 @@ input {
   padding: var(--space-8) 0;
 }
 
-/* ---------------------------------------------------------
-   Section muted (CORREÇÃO DE “FAIXA” ENTRE SEÇÕES)
-   Em vez do background direto, usamos overlay suave via ::before
-   para evitar “linha” quando termina uma seção e começa outra.
----------------------------------------------------------- */
+/* Section muted com overlay suave */
 .section--muted {
   position: relative;
-  background: transparent; /* remove o gradiente direto */
+  background: transparent;
 }
 
 .section--muted::before {
@@ -209,7 +251,6 @@ input {
   z-index: -1;
   pointer-events: none;
 
-  /* Overlay suave (sem emenda visível) */
   background: linear-gradient(
     180deg,
     transparent 0%,
@@ -250,7 +291,7 @@ html[data-theme="light"] .section--muted::before {
 }
 
 /* -----------------------------
-   Header / Nav
+   Header / Nav (mantido no CSS, mesmo que HTML esteja removido)
 ------------------------------ */
 .header {
   position: sticky;
@@ -458,32 +499,55 @@ html[data-theme="light"] .section--muted::before {
   display: inline-flex;
 }
 
+.btn:hover {
+  box-shadow: var(--focus);
+}
+
+.btn:focus-visible {
+  box-shadow: var(--focus), 0 0 0 1px rgba(51, 105, 232, 0.10);
+}
+
 .btn--primary {
-  background: linear-gradient(135deg, var(--brand), color-mix(in srgb, var(--brand) 65%, var(--brand-2)));
+  background: linear-gradient(
+    135deg,
+    rgba(51, 105, 232, 1),
+    color-mix(in srgb, var(--brand) 72%, var(--brand-2))
+  );
   color: #fff;
   border-color: transparent;
-  box-shadow: 0 10px 24px rgba(51, 105, 232, 0.18);
+  box-shadow: var(--glow-brand);
 }
+
 .btn--primary:hover {
   transform: translateY(-1px);
-  box-shadow: 0 14px 30px rgba(51, 105, 232, 0.22);
+  box-shadow: var(--glow-brand), 0 22px 46px rgba(51, 105, 232, 0.18);
 }
 
 .btn--secondary {
-  background: var(--surface);
+  background: var(--glass);
   color: var(--text);
+  border-color: var(--border);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
+
 .btn--secondary:hover {
   transform: translateY(-1px);
-  background: var(--surface-2);
+  background: var(--glass-2);
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-soft);
 }
 
 .btn--ghost {
   background: transparent;
   color: var(--text);
+  border-color: color-mix(in srgb, var(--border) 72%, transparent);
 }
+
 .btn--ghost:hover {
-  background: var(--surface);
+  background: color-mix(in srgb, var(--surface) 62%, transparent);
+  border-color: var(--border-strong);
+  box-shadow: none;
 }
 
 .btn--icon {
@@ -500,19 +564,14 @@ html[data-theme="light"] .section--muted::before {
 /* -----------------------------
    Hero
 ------------------------------ */
-/* ajuste hero topo sem header:
-   Antes havia compensações (header sticky). Agora garantimos respiro consistente no topo
-   usando clamp(), sem alterar o padding padrão das outras sections. */
 .hero {
-  padding-top: 0; /* mantém neutro (section controla o espaçamento) */
+  padding-top: 0;
 }
 
-/* ajuste hero topo sem header:
-   O hero é uma section, então sobrescrevemos apenas o padding-top dela (home e cursos). */
 .section.hero,
 .section.hero.hero--course {
   padding-top: clamp(48px, 6vw, 120px);
-  padding-bottom: var(--space-8); /* mantém harmonia do layout */
+  padding-bottom: var(--space-8);
 }
 
 .hero__grid {
@@ -526,6 +585,34 @@ html[data-theme="light"] .section--muted::before {
   line-height: 1.08;
   letter-spacing: -0.03em;
   margin: 0 0 var(--space-3);
+
+  /* gradiente discreto no texto */
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--text) 86%, var(--brand)),
+    color-mix(in srgb, var(--text) 70%, var(--brand)),
+    color-mix(in srgb, var(--text) 78%, var(--brand-2))
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero__title::after {
+  content: "";
+  display: block;
+  width: min(220px, 58%);
+  height: 3px;
+  margin-top: 12px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    rgba(51, 105, 232, 0.0),
+    rgba(51, 105, 232, 0.38),
+    rgba(0, 153, 37, 0.18),
+    rgba(51, 105, 232, 0.0)
+  );
+  filter: blur(0.2px);
 }
 
 .hero__text {
@@ -576,13 +663,32 @@ html[data-theme="light"] .section--muted::before {
   padding: 10px 12px;
   border-radius: 999px;
   border: 1px solid var(--border);
-  background: var(--surface);
+  background: var(--glass);
   color: var(--text);
   font-weight: 600;
   font-size: 0.92rem;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 .pill__icon {
   display: inline-flex;
+}
+
+/* Hero trust pills: 1o verde, 2o azul */
+.hero__trust .pill:nth-child(1) {
+  border-color: color-mix(in srgb, var(--brand-2) 22%, var(--border));
+  box-shadow: var(--glow-green);
+}
+.hero__trust .pill:nth-child(1) .pill__icon {
+  color: var(--brand-2);
+}
+
+.hero__trust .pill:nth-child(2) {
+  border-color: color-mix(in srgb, var(--brand) 18%, var(--border));
+  box-shadow: var(--glow-brand);
+}
+.hero__trust .pill:nth-child(2) .pill__icon {
+  color: var(--brand);
 }
 
 /* Media card */
@@ -591,11 +697,15 @@ html[data-theme="light"] .section--muted::before {
   border-radius: var(--radius);
   overflow: hidden;
   border: 1px solid var(--border);
-  background: var(--surface);
+  background: var(--glass);
   box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  isolation: isolate;
 }
 
-/* ajuste de enquadramento (só esta imagem): desce ~20% */
+/* ajuste de enquadramento (só esta imagem): desce */
 .media-card__img--down {
   object-position: center 14%;
 }
@@ -605,18 +715,56 @@ html[data-theme="light"] .section--muted::before {
   height: auto;
   aspect-ratio: 1 / 1;
   object-fit: cover;
+  display: block;
 }
 
+/* Halo circular atrás da imagem (amarelo sutil) */
+.hero__media .media-card::before {
+  content: "";
+  position: absolute;
+  inset: -18%;
+  z-index: 0;
+  pointer-events: none;
+
+  background:
+    radial-gradient(circle at 62% 42%, rgba(238, 178, 17, 0.16), transparent 58%),
+    radial-gradient(circle at 60% 40%, rgba(51, 105, 232, 0.10), transparent 62%);
+
+  border-radius: 999px;
+  filter: blur(2px);
+  opacity: 1;
+}
+
+/* garante que apenas a mídia fique acima do halo (sem afetar o overlay) */
+.hero__media .media-card > img,
+.hero__media .media-card > picture {
+  position: relative;
+  z-index: 1;
+}
+
+/* Overlay sempre preso dentro do card */
 .media-card__overlay {
   position: absolute;
   left: 14px;
   right: 14px;
   bottom: 14px;
+  z-index: 2;
+
   padding: 14px;
   border-radius: 16px;
-  background: color-mix(in srgb, var(--bg) 70%, transparent);
-  border: 1px solid var(--border);
+
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.14), rgba(0, 0, 0, 0.22)),
+    color-mix(in srgb, var(--bg) 68%, transparent);
+
+  border: 1px solid var(--border-strong);
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-soft);
+
+  /* evita qualquer “estouro” por sizing em casos raros */
+  max-width: calc(100% - 28px);
+  box-sizing: border-box;
 }
 
 .media-card__title {
@@ -681,18 +829,23 @@ html[data-theme="light"] .section--muted::before {
   }
 }
 
+/* Card premium glass */
 .card {
   border-radius: var(--radius);
   border: 1px solid var(--border);
-  background: var(--surface);
+  background: var(--glass);
   box-shadow: none;
   padding: var(--space-5);
-  transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: transform 160ms ease, background 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
 }
 
 .card:hover {
   transform: translateY(-2px);
-  background: var(--surface-2);
+  background: var(--glass-2);
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-soft);
 }
 
 .card__title {
@@ -707,9 +860,10 @@ html[data-theme="light"] .section--muted::before {
 }
 
 .card--soft {
-  background: color-mix(in srgb, var(--surface) 70%, transparent);
+  background: color-mix(in srgb, var(--glass) 78%, transparent);
 }
 
+/* Features */
 .feature {
   padding: var(--space-5);
 }
@@ -721,11 +875,26 @@ html[data-theme="light"] .section--muted::before {
   display: grid;
   place-items: center;
   margin-bottom: var(--space-3);
-  background: color-mix(in srgb, var(--brand) 18%, transparent);
+
+  background: color-mix(in srgb, var(--brand) 14%, transparent);
   color: var(--brand);
-  border: 1px solid color-mix(in srgb, var(--brand) 24%, transparent);
+  border: 1px solid color-mix(in srgb, var(--brand) 20%, transparent);
 }
 
+/* variações sutis */
+.grid--features .feature:nth-child(4) .feature__icon {
+  background: color-mix(in srgb, var(--brand-2) 12%, transparent);
+  border-color: color-mix(in srgb, var(--brand-2) 18%, transparent);
+  color: var(--brand-2);
+}
+
+.grid--features .feature:nth-child(7) .feature__icon {
+  background: color-mix(in srgb, var(--warn) 10%, transparent);
+  border-color: color-mix(in srgb, var(--warn) 16%, transparent);
+  color: color-mix(in srgb, var(--text) 88%, var(--warn));
+}
+
+/* Courses */
 .course__top {
   display: flex;
   align-items: center;
@@ -741,6 +910,7 @@ html[data-theme="light"] .section--muted::before {
   margin-top: var(--space-4);
 }
 
+/* Specialists */
 .specialist {
   padding: 0;
   overflow: hidden;
@@ -769,20 +939,18 @@ html[data-theme="light"] .section--muted::before {
 .callout {
   border-radius: 26px;
   padding: clamp(24px, 3vw, 44px);
-  border: 1px solid color-mix(in srgb, var(--brand) 24%, var(--border));
+  border: 1px solid color-mix(in srgb, var(--brand) 22%, var(--border));
 
-  /* =============================
-     Callout: mesmo desenho, só troca a paleta
-     (azul + vermelho + amarelo + verde, suave)
-     ============================= */
   background:
     radial-gradient(700px 350px at 20% 20%, rgba(51, 105, 232, 0.16), transparent 55%),
-    radial-gradient(700px 350px at 92% 10%, rgba(213, 15, 37, 0.10), transparent 60%),
+    radial-gradient(700px 350px at 92% 10%, rgba(213, 15, 37, 0.08), transparent 60%),
     radial-gradient(700px 350px at 55% 85%, rgba(238, 178, 17, 0.08), transparent 60%),
     radial-gradient(700px 350px at 10% 90%, rgba(0, 153, 37, 0.08), transparent 60%),
-    var(--surface);
+    var(--glass);
 
   box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .callout__quote {
@@ -825,17 +993,25 @@ html[data-theme="light"] .section--muted::before {
   gap: 8px;
   padding: 8px 10px;
   border-radius: 999px;
-  background: var(--surface);
+  background: var(--glass);
   border: 1px solid var(--border);
   color: var(--text);
   font-weight: 600;
   font-size: 0.9rem;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .badge--soft {
   background: color-mix(in srgb, var(--brand) 10%, transparent);
   border-color: color-mix(in srgb, var(--brand) 18%, transparent);
-  color: color-mix(in srgb, var(--text) 90%, var(--brand));
+  color: color-mix(in srgb, var(--text) 92%, var(--brand));
+}
+
+/* destaque sutil com amarelo (primeiro badge dos cursos) */
+.hero--course .badges .badge:nth-child(1) {
+  background: color-mix(in srgb, var(--warn) 10%, transparent);
+  border-color: color-mix(in srgb, var(--warn) 16%, transparent);
 }
 
 /* Prose card */
@@ -862,11 +1038,12 @@ html[data-theme="light"] .section--muted::before {
   border-radius: 14px;
   border: 1px solid var(--border);
   background: transparent;
-  transition: background 160ms ease, transform 160ms ease;
+  transition: background 160ms ease, transform 160ms ease, border-color 160ms ease;
 }
 .link-row:hover {
-  background: var(--surface);
+  background: var(--glass);
   transform: translateY(-1px);
+  border-color: var(--border-strong);
 }
 .link-row__icon {
   width: 38px;
@@ -874,7 +1051,7 @@ html[data-theme="light"] .section--muted::before {
   border-radius: 14px;
   display: grid;
   place-items: center;
-  background: var(--surface);
+  background: var(--glass);
   border: 1px solid var(--border);
 }
 
@@ -921,8 +1098,10 @@ html[data-theme="light"] .input {
   padding: 14px;
   border-radius: 16px;
   border: 1px solid var(--border);
-  background: var(--surface);
+  background: var(--glass);
   color: var(--muted);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 /* Checklist */
@@ -945,6 +1124,7 @@ html[data-theme="light"] .input {
   top: 0;
   color: var(--brand-2);
   font-weight: 800;
+  text-shadow: 0 0 18px rgba(0, 153, 37, 0.16);
 }
 
 /* CTA block */
@@ -991,9 +1171,17 @@ html[data-theme="light"] .input {
   align-items: start;
   padding: var(--space-5);
   border-radius: var(--radius);
-  border: 1px solid var(--border);
-  background: var(--surface);
+
+  background:
+    radial-gradient(700px 340px at 18% 10%, rgba(0, 153, 37, 0.10), transparent 60%),
+    radial-gradient(700px 340px at 82% 90%, rgba(51, 105, 232, 0.08), transparent 62%),
+    var(--glass);
+
+  border: 1px solid color-mix(in srgb, var(--brand-2) 16%, var(--border));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
+
 .guarantee__icon {
   width: 52px;
   height: 52px;
@@ -1001,8 +1189,9 @@ html[data-theme="light"] .input {
   display: grid;
   place-items: center;
   background: color-mix(in srgb, var(--brand-2) 14%, transparent);
-  border: 1px solid color-mix(in srgb, var(--brand-2) 20%, transparent);
+  border: 1px solid color-mix(in srgb, var(--brand-2) 22%, transparent);
   color: var(--brand-2);
+  box-shadow: var(--glow-green);
 }
 
 /* Placeholder block */
@@ -1031,8 +1220,11 @@ html[data-theme="light"] .input {
 .accordion__item {
   border-radius: var(--radius);
   border: 1px solid var(--border);
-  background: var(--surface);
+  background: var(--glass);
   overflow: hidden;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: border-color 160ms ease, box-shadow 160ms ease, background 160ms ease;
 }
 
 .accordion__trigger {
@@ -1051,7 +1243,7 @@ html[data-theme="light"] .input {
 }
 
 .accordion__trigger:hover {
-  background: var(--surface-2);
+  background: var(--glass-2);
 }
 
 .accordion__icon {
@@ -1079,6 +1271,11 @@ html[data-theme="light"] .input {
   transform: rotate(0deg);
 }
 
+.accordion__item.is-open {
+  border-color: color-mix(in srgb, var(--brand) 16%, var(--border));
+  box-shadow: var(--shadow-soft);
+}
+
 .accordion__panel {
   padding: 0 16px 16px;
   color: var(--muted);
@@ -1097,6 +1294,12 @@ html[data-theme="light"] .input {
 .footer {
   padding: var(--space-7) 0 var(--space-6);
   border-top: 1px solid var(--border);
+
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    color-mix(in srgb, var(--bg) 88%, rgba(0, 0, 0, 0.20)) 100%
+  );
 }
 
 .footer__grid {
@@ -1132,10 +1335,12 @@ html[data-theme="light"] .input {
   gap: 8px;
 }
 .footer__links a {
-  color: var(--muted);
+  color: color-mix(in srgb, var(--muted) 92%, transparent);
+  transition: color 160ms ease, transform 160ms ease;
 }
 .footer__links a:hover {
-  color: var(--text);
+  color: color-mix(in srgb, var(--text) 74%, var(--brand));
+  transform: translateY(-1px);
 }
 
 .footer__bottom {
@@ -1148,16 +1353,17 @@ html[data-theme="light"] .input {
   position: fixed;
   right: 16px;
   border-radius: 999px;
-  border: 1px solid var(--border);
-  background: color-mix(in srgb, var(--bg) 80%, transparent);
+  border: 1px solid var(--border-strong);
+  background: color-mix(in srgb, var(--bg) 74%, transparent);
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   color: var(--text);
   display: inline-flex;
   align-items: center;
   gap: 10px;
   padding: 12px 14px;
   box-shadow: var(--shadow-soft);
-  transition: transform 160ms ease, opacity 160ms ease;
+  transition: transform 160ms ease, opacity 160ms ease, box-shadow 160ms ease;
   z-index: 80;
 }
 
@@ -1187,6 +1393,7 @@ html[data-theme="light"] .input {
 
 .fab:hover {
   transform: translateY(-2px);
+  box-shadow: var(--shadow-soft), var(--focus);
 }
 
 /* Center helper */
@@ -1197,7 +1404,6 @@ html[data-theme="light"] .input {
 
 /* -----------------------------
    Reveal animations
-   (JS adiciona .is-visible via IntersectionObserver)
 ------------------------------ */
 .reveal {
   opacity: 0;
