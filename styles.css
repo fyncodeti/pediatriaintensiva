@@ -1533,3 +1533,98 @@ html[data-theme="light"] .input {
     transform: none;
   }
 }
+
+/* =========================
+   Interações: Readbar + CTA sheen/pulse + Tilt cards
+   ========================= */
+
+/* Read progress bar */
+.readbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: color-mix(in srgb, var(--text) 10%, transparent);
+  z-index: 9999;
+}
+.readbar__fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--brand), var(--brand-2));
+  transform-origin: left;
+}
+
+/* CTA sheen + pulse (aplicado em .btn--cta) */
+.btn--cta {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn--cta::before {
+  content: "";
+  position: absolute;
+  inset: -45% -60%;
+  background: linear-gradient(
+    110deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.22) 45%,
+    transparent 55%
+  );
+  transform: translateX(-60%) rotate(8deg);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.btn--cta.is-sheen::before {
+  animation: sheen 2.4s ease-in-out infinite;
+  opacity: 1;
+}
+
+@keyframes sheen {
+  0% { transform: translateX(-70%) rotate(8deg); opacity: 0; }
+  20% { opacity: 0.65; }
+  55% { opacity: 0.15; }
+  100% { transform: translateX(70%) rotate(8deg); opacity: 0; }
+}
+
+.btn--cta.is-pulse {
+  animation: pulseOnce 0.7s ease-out 1;
+}
+
+@keyframes pulseOnce {
+  0% { transform: translateY(0) scale(1); }
+  45% { transform: translateY(-1px) scale(1.03); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+/* Tilt: usa sua base .card, só adiciona 3D + glow */
+.tilt-card {
+  position: relative;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.tilt-card__glow {
+  position: absolute;
+  inset: -40%;
+  background: radial-gradient(
+    closest-side,
+    color-mix(in srgb, var(--brand) 35%, transparent),
+    transparent 70%
+  );
+  transform: translate(var(--gx, 0px), var(--gy, 0px));
+  opacity: 0;
+  transition: opacity 160ms ease;
+  pointer-events: none;
+}
+
+.tilt-card.is-active .tilt-card__glow {
+  opacity: 1;
+}
+
+/* Conteúdo do card “salta” levemente no 3D sem quebrar layout */
+.tilt-card > :not(.tilt-card__glow) {
+  position: relative;
+  transform: translateZ(18px);
+}

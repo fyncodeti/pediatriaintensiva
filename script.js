@@ -158,4 +158,103 @@
   if (backToTop) {
     backToTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
   }
+
+  // ---------------------------
+  // Reading progress bar (topo)
+  // ---------------------------
+  const readbarFill = document.getElementById("readbarFill");
+
+  function updateReadbar() {
+    if (!readbarFill) return;
+    const doc = document.documentElement;
+    const scrollTop = doc.scrollTop || document.body.scrollTop;
+    const height = doc.scrollHeight - doc.clientHeight;
+    const p = height > 0 ? scrollTop / height : 0;
+    readbarFill.style.width = `${Math.max(0, Math.min(100, p * 100))}%`;
+  }
+
+  window.addEventListener("scroll", updateReadbar, { passive: true });
+  window.addEventListener("resize", updateReadbar);
+  updateReadbar();
+
+  // ---------------------------
+  // CTA: sheen (loop) + pulse on view
+  // ---------------------------
+  const ctas = $$(`.js-cta`);
+
+  if (ctas.length) {
+    ctas.forEach((cta) => cta.classList.add("is-sheen"));
+
+    if ("IntersectionObserver" in window) {
+      const ctaIO = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.remove("is-pulse");
+              void e.target.offsetWidth; // restart
+              e.target.classList.add("is-pulse");
+            }
+          });
+        },
+        { threshold: 0.6 }
+      );
+
+      ctas.forEach((cta) => ctaIO.observe(cta));
+    }
+  }
+
+  // ---------------------------
+  // Tilt cards (mouse) + glow
+  // ---------------------------
+  const prefersReduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const tiltCards = $$(`.js-tilt`);
+
+  function clamp(n, min, max) {
+    return Math.max(min, Math.min(max, n));
+  }
+
+  if (!prefersReduced && tiltCards.length) {
+    tiltCards.forEach((card) => {
+      let raf = 0;
+
+      const onMove = (ev) => {
+        const rect = card.getBoundingClientRect();
+        const x = ev.clientX - rect.left;
+        const y = ev.clientY - rect.top;
+
+        const nx = x / rect.width - 0.5; // [-0.5, 0.5]
+        const ny = y / rect.height - 0.5;
+
+        const rotateY = clamp(nx * 10, -8, 8);
+        const rotateX = clamp(-ny * 10, -8, 8);
+
+        const gx = (nx * rect.width) * 0.35;
+        const gy = (ny * rect.height) * 0.35;
+
+        if (raf) cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(() => {
+          card.classList.add("is-active");
+          card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-1px)`;
+          card.style.setProperty("--gx", `${gx}px`);
+          card.style.setProperty("--gy", `${gy}px`);
+        });
+      };
+
+      const reset = () => {
+        if (raf) cancelAnimationFrame(raf);
+        card.classList.remove("is-active");
+        card.style.transform = "";
+        card.style.setProperty("--gx", `0px`);
+        card.style.setProperty("--gy", `0px`);
+      };
+
+      card.addEventListener("mousemove", onMove, { passive: true });
+      card.addEventListener("mouseleave", reset);
+      card.addEventListener("blur", reset);
+
+      // Touch: sem tilt, só feedback leve
+      card.addEventListener("touchstart", () => card.classList.add("is-active"), { passive: true });
+      card.addEventListener("touchend", reset);
+    });
+  }
 })();

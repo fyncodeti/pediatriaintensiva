@@ -39,6 +39,11 @@
     <!-- Skip link: acessibilidade -->
     <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
+    <!-- Reading progress bar (topo) -->
+    <div class="readbar" aria-hidden="true">
+      <div class="readbar__fill" id="readbarFill"></div>
+    </div>
+
     <!-- Header removido por solicitação -->
 
     <main id="conteudo">
@@ -59,7 +64,7 @@
             </p>
 
             <div class="hero__actions">
-              <a class="btn btn--primary" href="#cursos" data-scroll>
+              <a class="btn btn--primary btn--cta js-cta" href="#cursos" data-scroll>
                 Conhecer cursos
                 <span class="btn__icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24" width="18" height="18">
@@ -150,7 +155,8 @@
           </div>
 
           <div class="grid grid--features">
-            <article class="card feature reveal">
+            <article class="card feature reveal tilt-card js-tilt" tabindex="0">
+              <div class="tilt-card__glow" aria-hidden="true"></div>
               <div class="feature__icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" width="18" height="18">
                   <path d="M12 2 4 5.5V11c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5.5L12 2Z" fill="currentColor" />
@@ -160,7 +166,8 @@
               <p class="card__text">Segurança definitiva no atendimento da criança grave.</p>
             </article>
 
-            <article class="card feature reveal">
+            <article class="card feature reveal tilt-card js-tilt" tabindex="0">
+              <div class="tilt-card__glow" aria-hidden="true"></div>
               <div class="feature__icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" width="18" height="18">
                   <path d="M4 6h16v2H4V6Zm0 5h16v2H4v-2Zm0 5h10v2H4v-2Z" fill="currentColor" />
@@ -170,7 +177,8 @@
               <p class="card__text">Conhecimento sobre o que fazer depois de atender a criança na emergência.</p>
             </article>
 
-            <article class="card feature reveal">
+            <article class="card feature reveal tilt-card js-tilt" tabindex="0">
+              <div class="tilt-card__glow" aria-hidden="true"></div>
               <div class="feature__icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" width="18" height="18">
                   <path d="M12 3 2 9l10 6 10-6-10-6Zm0 9L2 6v12l10 6 10-6V6l-10 6Z" fill="currentColor" />
@@ -180,7 +188,8 @@
               <p class="card__text">Conteúdos aplicáveis em qualquer ambiente de atendimento à criança.</p>
             </article>
 
-            <article class="card feature reveal">
+            <article class="card feature reveal tilt-card js-tilt" tabindex="0">
+              <div class="tilt-card__glow" aria-hidden="true"></div>
               <div class="feature__icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" width="18" height="18">
                   <path
@@ -193,7 +202,8 @@
               <p class="card__text">Cuidados assistenciais seguros e efetivos.</p>
             </article>
 
-            <article class="card feature reveal">
+            <article class="card feature reveal tilt-card js-tilt" tabindex="0">
+              <div class="tilt-card__glow" aria-hidden="true"></div>
               <div class="feature__icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" width="18" height="18">
                   <path
@@ -206,7 +216,8 @@
               <p class="card__text">Capacidade de raciocinar e individualizar cuidados sem depender de macetes.</p>
             </article>
 
-            <article class="card feature reveal">
+            <article class="card feature reveal tilt-card js-tilt" tabindex="0">
+              <div class="tilt-card__glow" aria-hidden="true"></div>
               <div class="feature__icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" width="18" height="18">
                   <path d="M7 2h10v2H7V2Zm-2 4h14v2H5V6Zm2 4h10v12H7V10Z" fill="currentColor" />
@@ -216,7 +227,8 @@
               <p class="card__text">Revisões de anatomia e fisiologia aplicada à clínica.</p>
             </article>
 
-            <article class="card feature reveal">
+            <article class="card feature reveal tilt-card js-tilt" tabindex="0">
+              <div class="tilt-card__glow" aria-hidden="true"></div>
               <div class="feature__icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" width="18" height="18">
                   <path
@@ -229,7 +241,8 @@
               <p class="card__text">Compreensão da criança além dos algoritmos.</p>
             </article>
 
-            <article class="card feature reveal">
+            <article class="card feature reveal tilt-card js-tilt" tabindex="0">
+              <div class="tilt-card__glow" aria-hidden="true"></div>
               <div class="feature__icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" width="18" height="18">
                   <path d="M20 6H4V4h16v2Zm0 4H4v10h16V10Zm-10 8H6v-2h4v2Zm8 0h-6v-2h6v2Zm0-4H6v-2h12v2Z" fill="currentColor" />
@@ -239,7 +252,8 @@
               <p class="card__text">Melhores resultados terapêuticos na condução da criança grave.</p>
             </article>
 
-            <article class="card feature reveal">
+            <article class="card feature reveal tilt-card js-tilt" tabindex="0">
+              <div class="tilt-card__glow" aria-hidden="true"></div>
               <div class="feature__icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" width="18" height="18">
                   <path
@@ -252,7 +266,8 @@
               <p class="card__text">Troca de experiências e expertises.</p>
             </article>
 
-            <article class="card feature reveal">
+            <article class="card feature reveal tilt-card js-tilt" tabindex="0">
+              <div class="tilt-card__glow" aria-hidden="true"></div>
               <div class="feature__icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" width="18" height="18">
                   <path
@@ -278,7 +293,8 @@
 
           <div class="grid grid--courses">
             <!-- PedIn-Enf -->
-            <article class="card course reveal">
+            <article class="card course reveal tilt-card js-tilt" tabindex="0">
+              <div class="tilt-card__glow" aria-hidden="true"></div>
               <!-- Thumb (sem imagem) -->
               <div class="course__media course__media--enf" aria-hidden="true">
                 <div class="course__media-inner">
@@ -324,7 +340,8 @@
             </article>
 
             <!-- PedIn-Med -->
-            <article class="card course reveal">
+            <article class="card course reveal tilt-card js-tilt" tabindex="0">
+              <div class="tilt-card__glow" aria-hidden="true"></div>
               <!-- Thumb (sem imagem) -->
               <div class="course__media course__media--med" aria-hidden="true">
                 <div class="course__media-inner">
@@ -381,7 +398,8 @@
           </div>
 
           <div class="grid grid--specialists">
-            <article class="card specialist reveal">
+            <article class="card specialist reveal tilt-card js-tilt" tabindex="0">
+              <div class="tilt-card__glow" aria-hidden="true"></div>
               <div class="specialist__media">
                 <img
                   src="./assets/img/Arnildo/Flavia_Arnildo_22.jpg"
@@ -403,7 +421,8 @@
               </div>
             </article>
 
-            <article class="card specialist reveal">
+            <article class="card specialist reveal tilt-card js-tilt" tabindex="0">
+              <div class="tilt-card__glow" aria-hidden="true"></div>
               <div class="specialist__media">
                 <picture>
                   <!-- quando o tema for escuro -->
@@ -467,7 +486,7 @@
             </p>
           </div>
           <div class="callout__actions">
-            <a class="btn btn--primary" href="#cursos" data-scroll>Acessar os cursos</a>
+            <a class="btn btn--primary btn--cta js-cta" href="#cursos" data-scroll>Acessar os cursos</a>
             <a
               class="btn btn--secondary"
               href="https://wa.me/5543991000508"
@@ -617,4 +636,5 @@
 
     <script src="script.js" defer></script>
   </body>
+
 </html>
