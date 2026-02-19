@@ -3,9 +3,9 @@
    Objetivos: premium, responsivo, acessível, performático
    ========================================================= */
 
-/* -----------------------------
-   CSS Variables (Design tokens)
------------------------------- */
+/* =========================================================
+   Design tokens (CSS Variables)
+   ========================================================= */
 :root {
   --bg: #0b1220;
   --surface: rgba(255, 255, 255, 0.06);
@@ -87,9 +87,9 @@ html[data-theme="light"] {
   --glow-green: 0 0 0 1px rgba(0, 153, 37, 0.12), 0 18px 40px rgba(0, 153, 37, 0.1);
 }
 
-/* -----------------------------
-   Base
------------------------------- */
+/* =========================================================
+   Base / Reset
+   ========================================================= */
 *,
 *::before,
 *::after {
@@ -112,7 +112,45 @@ body {
   background: var(--bg);
 }
 
-/* Background global premium tech */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+/* Acessibilidade: foco visível */
+:focus-visible {
+  outline: none;
+  box-shadow: var(--focus);
+  border-radius: 10px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 10px;
+  z-index: 9999;
+  background: var(--text);
+  color: var(--bg);
+  padding: 10px 14px;
+  border-radius: 10px;
+}
+.skip-link:focus {
+  left: 10px;
+}
+
+/* =========================================================
+   Background global premium tech
+   ========================================================= */
 body::before {
   content: "";
   position: fixed;
@@ -170,45 +208,9 @@ html[data-theme="light"] body::after {
   opacity: 0.18;
 }
 
-img {
-  max-width: 100%;
-  display: block;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-button,
-input {
-  font: inherit;
-}
-
-/* Acessibilidade: foco visível */
-:focus-visible {
-  outline: none;
-  box-shadow: var(--focus);
-  border-radius: 10px;
-}
-
-.skip-link {
-  position: absolute;
-  left: -999px;
-  top: 10px;
-  z-index: 9999;
-  background: var(--text);
-  color: var(--bg);
-  padding: 10px 14px;
-  border-radius: 10px;
-}
-.skip-link:focus {
-  left: 10px;
-}
-
-/* -----------------------------
+/* =========================================================
    Layout helpers
------------------------------- */
+   ========================================================= */
 .container {
   width: min(var(--container), calc(100% - 2 * var(--space-4)));
   margin-inline: auto;
@@ -267,9 +269,9 @@ html[data-theme="light"] .section--muted::before {
   max-width: 68ch;
 }
 
-/* -----------------------------
+/* =========================================================
    Header / Nav
------------------------------- */
+   ========================================================= */
 .header {
   position: sticky;
   top: 0;
@@ -454,9 +456,9 @@ html[data-theme="light"] .section--muted::before {
   }
 }
 
-/* -----------------------------
+/* =========================================================
    Shared glass blur (mantem comportamento)
------------------------------- */
+   ========================================================= */
 .btn--secondary,
 .pill,
 .media-card,
@@ -472,9 +474,9 @@ html[data-theme="light"] .section--muted::before {
   -webkit-backdrop-filter: blur(10px);
 }
 
-/* -----------------------------
+/* =========================================================
    Buttons
------------------------------- */
+   ========================================================= */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -547,9 +549,9 @@ html[data-theme="light"] .section--muted::before {
   width: 100%;
 }
 
-/* -----------------------------
+/* =========================================================
    Hero
------------------------------- */
+   ========================================================= */
 .hero {
   padding-top: 0;
 }
@@ -742,9 +744,9 @@ html[data-theme="light"] .section--muted::before {
   font-size: 0.95rem;
 }
 
-/* -----------------------------
+/* =========================================================
    Grid / Cards
------------------------------- */
+   ========================================================= */
 .grid {
   display: grid;
   gap: var(--space-4);
@@ -779,7 +781,7 @@ html[data-theme="light"] .section--muted::before {
   width: min(680px, 100%);
 }
 
-/* Opcional: centraliza o "bloco" (titulo/subtitulo + grid) sem mudar o alinhamento do texto */
+/* Centraliza o bloco (titulo/subtitulo + grid) sem mudar o alinhamento do texto */
 .section__head:has(+ .grid--contact),
 .grid--contact {
   max-width: 900px;
@@ -1120,9 +1122,9 @@ html[data-theme="light"] .section--muted::before {
   color: var(--text);
 }
 
-/* -----------------------------
+/* =========================================================
    Contact
------------------------------- */
+   ========================================================= */
 .contact__items {
   display: grid;
   gap: 10px;
@@ -1131,13 +1133,6 @@ html[data-theme="light"] .section--muted::before {
 
 .link-row {
   min-width: 0;
-}
-.link-row span:last-child {
-  min-width: 0;
-  overflow-wrap: anywhere;
-}
-
-.link-row {
   display: flex;
   gap: 10px;
   align-items: center;
@@ -1151,6 +1146,10 @@ html[data-theme="light"] .section--muted::before {
   background: var(--glass);
   transform: translateY(-1px);
   border-color: var(--border-strong);
+}
+.link-row span:last-child {
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .link-row__icon {
@@ -1260,11 +1259,13 @@ html[data-theme="light"] .input {
     grid-template-columns: 1.2fr 0.8fr;
   }
 }
+
 .cta__title {
   margin: 0 0 var(--space-3);
   font-size: var(--fs-4);
   letter-spacing: -0.03em;
 }
+
 .cta__price {
   margin: 0 0 var(--space-2);
   color: var(--muted);
@@ -1274,10 +1275,12 @@ html[data-theme="light"] .input {
   color: var(--text);
   font-size: var(--fs-3);
 }
+
 .cta__meta {
   margin: 0;
   color: var(--muted);
 }
+
 .cta__actions {
   display: flex;
   flex-wrap: wrap;
@@ -1405,7 +1408,9 @@ html[data-theme="light"] .input {
   color: var(--muted);
 }
 
-/* Footer */
+/* =========================================================
+   Footer
+   ========================================================= */
 .footer {
   padding: var(--space-7) 0 var(--space-6);
   border-top: 1px solid var(--border);
@@ -1461,7 +1466,9 @@ html[data-theme="light"] .input {
   color: var(--muted);
 }
 
-/* FABs */
+/* =========================================================
+   FABs
+   ========================================================= */
 .fab {
   position: fixed;
   right: 16px;
@@ -1509,7 +1516,9 @@ html[data-theme="light"] .input {
   justify-content: center;
 }
 
-/* Reveal animations */
+/* =========================================================
+   Reveal animations
+   ========================================================= */
 .reveal {
   opacity: 0;
   transform: translateY(10px);
@@ -1534,9 +1543,9 @@ html[data-theme="light"] .input {
   }
 }
 
-/* =========================
+/* =========================================================
    Interações: Readbar + CTA sheen/pulse + Tilt cards
-   ========================= */
+   ========================================================= */
 
 /* Read progress bar */
 .readbar {
@@ -1582,10 +1591,20 @@ html[data-theme="light"] .input {
 }
 
 @keyframes sheen {
-  0% { transform: translateX(-70%) rotate(8deg); opacity: 0; }
-  20% { opacity: 0.65; }
-  55% { opacity: 0.15; }
-  100% { transform: translateX(70%) rotate(8deg); opacity: 0; }
+  0% {
+    transform: translateX(-70%) rotate(8deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.65;
+  }
+  55% {
+    opacity: 0.15;
+  }
+  100% {
+    transform: translateX(70%) rotate(8deg);
+    opacity: 0;
+  }
 }
 
 .btn--cta.is-pulse {
@@ -1593,9 +1612,15 @@ html[data-theme="light"] .input {
 }
 
 @keyframes pulseOnce {
-  0% { transform: translateY(0) scale(1); }
-  45% { transform: translateY(-1px) scale(1.03); }
-  100% { transform: translateY(0) scale(1); }
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  45% {
+    transform: translateY(-1px) scale(1.03);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
 }
 
 /* Tilt: usa sua base .card, só adiciona 3D + glow */
@@ -1623,146 +1648,17 @@ html[data-theme="light"] .input {
   opacity: 1;
 }
 
-/* Conteúdo do card “salta” levemente no 3D sem quebrar layout */
+/* Conteúdo do card salta levemente no 3D sem quebrar layout */
 .tilt-card > :not(.tilt-card__glow) {
   position: relative;
   transform: translateZ(18px);
 }
 
-/* =========================
-   CTA Preço: hierarquia forte do preço
-   ========================= */
-
-#preco .cta__price.cta__price--strong {
-  display: grid;
-  gap: 6px;
-  align-items: start;
-  margin: 0 0 var(--space-2);
-  color: var(--muted);
-  font-size: var(--fs-2);
-  max-width: 52ch;
-}
-
-#preco .cta__was {
-  display: inline-flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  align-items: baseline;
-  width: fit-content;
-  position: relative;
-  opacity: 0.92;
-}
-
-#preco .cta__was .muted {
-  font-size: 0.95em;
-}
-
-/* Risca o preço antigo de forma discreta, sem poluir */
-#preco .cta__was::after {
-  content: "";
-  position: absolute;
-  left: -2px;
-  right: -2px;
-  top: 52%;
-  height: 1.6px;
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--danger) 62%, transparent);
-  opacity: 0.65;
-  transform: rotate(-1deg);
-  pointer-events: none;
-}
-
-#preco .cta__now {
-  display: inline-block;
-  width: fit-content;
-  color: var(--text);
-  font-weight: 900;
-  letter-spacing: -0.03em;
-  line-height: 1.02;
-  font-size: clamp(2.25rem, 1.9rem + 2.2vw, 3.35rem);
-  background: linear-gradient(
-    90deg,
-    color-mix(in srgb, #ffffff 88%, var(--brand)),
-    color-mix(in srgb, #ffffff 78%, var(--brand)),
-    color-mix(in srgb, #ffffff 78%, var(--brand-2))
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  text-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
-}
-
-html[data-theme="light"] #preco .cta__now {
-  text-shadow: 0 10px 26px rgba(10, 18, 32, 0.12);
-}
-
-#preco .cta__terms {
-  font-size: 0.98em;
-}
-
-/* Em telas bem pequenas, dá um foco extra no preço sem aumentar demais o bloco */
-@media (max-width: 520px) {
-  #preco .cta__price.cta__price--strong {
-    gap: 4px;
-  }
-  #preco .cta__terms {
-    font-size: 0.95em;
-  }
-}
-
-/* =========================
-   Botão CTA principal: mais forte e com hierarquia clara
-   ========================= */
-
-.btn--highlight {
-  padding: 14px 18px;
-  border-radius: 16px;
-  font-weight: 800;
-  letter-spacing: -0.01em;
-  border-color: transparent;
-  color: #fff;
-
-  background:
-    radial-gradient(900px 240px at 30% 10%, rgba(238, 178, 17, 0.22), transparent 60%),
-    linear-gradient(135deg, color-mix(in srgb, var(--brand) 85%, #ffffff 0%), color-mix(in srgb, var(--brand-2) 65%, var(--brand)));
-  box-shadow: var(--glow-brand);
-  transform: translateZ(0);
-  will-change: transform;
-}
-
-.btn--highlight:hover {
-  transform: translateY(-1px);
-  box-shadow: var(--glow-brand), 0 22px 46px rgba(51, 105, 232, 0.18);
-}
-
-.btn--highlight:active {
-  transform: translateY(0);
-}
-
-.btn--highlight:focus-visible {
-  box-shadow: var(--focus), 0 0 0 1px rgba(255, 255, 255, 0.22), var(--glow-brand);
-}
-
-/* Mantém o CTA forte em mobile sem quebrar layout */
-@media (max-width: 700px) {
-  .cta__actions .btn--highlight {
-    width: 100%;
-  }
-}
-
-/* Respeito a reduce motion: remove lift */
-@media (prefers-reduced-motion: reduce) {
-  .btn--highlight,
-  .btn--highlight:hover,
-  .btn--highlight:active {
-    transform: none !important;
-  }
-}
-
-/* =========================
-   CTA Preço: ainda mais foco no valor
-   ========================= */
-
+/* =========================================================
+   CTA Preço: hierarquia forte do preço (consolidado)
+   Observação: havia regras duplicadas no final do arquivo.
+   Mantive os valores finais (os que estavam por ultimo).
+   ========================================================= */
 #preco .cta__price.cta__price--strong {
   display: grid;
   gap: 6px;
@@ -1807,8 +1703,8 @@ html[data-theme="light"] #preco .cta__now {
   width: fit-content;
   font-weight: 950;
   letter-spacing: -0.04em;
-  line-height: 1.0;
-  font-size: clamp(2.6rem, 2.1rem + 3.0vw, 4.1rem);
+  line-height: 1;
+  font-size: clamp(2.6rem, 2.1rem + 3vw, 4.1rem);
   background: linear-gradient(
     90deg,
     color-mix(in srgb, #ffffff 92%, var(--brand)),
@@ -1846,10 +1742,21 @@ html[data-theme="light"] #preco .cta__now {
   font-size: 0.98em;
 }
 
-/* =========================
-   Botão CTA principal: maior + movimento contínuo
-   ========================= */
+/* Em telas bem pequenas, dá um foco extra no preço sem aumentar demais o bloco */
+@media (max-width: 520px) {
+  #preco .cta__price.cta__price--strong {
+    gap: 4px;
+  }
+  #preco .cta__terms {
+    font-size: 0.95em;
+  }
+}
 
+/* =========================================================
+   Botão CTA principal: maior + movimento contínuo (consolidado)
+   Observação: havia duas definicoes de .btn--highlight.
+   Mantive os valores finais (os que estavam por ultimo).
+   ========================================================= */
 .btn--highlight {
   padding: 16px 22px;
   border-radius: 18px;
@@ -1861,13 +1768,19 @@ html[data-theme="light"] #preco .cta__now {
 
   background:
     radial-gradient(900px 260px at 30% 0%, rgba(238, 178, 17, 0.28), transparent 60%),
-    linear-gradient(135deg, color-mix(in srgb, var(--brand) 88%, #ffffff 0%), color-mix(in srgb, var(--brand-2) 70%, var(--brand)));
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--brand) 88%, #ffffff 0%),
+      color-mix(in srgb, var(--brand-2) 70%, var(--brand))
+    );
+
   box-shadow: var(--glow-brand), 0 18px 44px rgba(0, 0, 0, 0.18);
   transform: translateZ(0);
   will-change: transform;
+  position: relative;
 }
 
-/* Borda brilhante sutil para "recorte" premium */
+/* Borda brilhante sutil para recorte premium */
 .btn--highlight::after {
   content: "";
   position: absolute;
@@ -1892,28 +1805,34 @@ html[data-theme="light"] #preco .cta__now {
   box-shadow: var(--focus), 0 0 0 1px rgba(255, 255, 255, 0.22), var(--glow-brand);
 }
 
-/* Movimento contínuo do CTA (respiração) */
-.btn--cta-float {
-  position: relative; /* necessário pro ::after acima e pro sheen */
-  animation: ctaFloat 1.8s ease-in-out infinite;
-}
-
-/* O sheen já vem do seu JS via .btn--cta.is-sheen::before, aqui só melhora a presença */
-.btn--cta-float.is-sheen::before {
-  opacity: 1;
-}
-
-/* Mantém responsivo */
+/* Mantém o CTA forte em mobile sem quebrar layout */
 @media (max-width: 700px) {
   .cta__actions .btn--highlight {
     width: 100%;
   }
 }
 
+/* Movimento contínuo do CTA (respiração) */
+.btn--cta-float {
+  position: relative; /* necessário pro ::after acima e pro sheen */
+  animation: ctaFloat 1.8s ease-in-out infinite;
+}
+
+/* O sheen vem do seu JS via .btn--cta.is-sheen::before, aqui só melhora a presença */
+.btn--cta-float.is-sheen::before {
+  opacity: 1;
+}
+
 @keyframes ctaFloat {
-  0%   { transform: translateY(0) scale(1); }
-  45%  { transform: translateY(-2px) scale(1.015); }
-  100% { transform: translateY(0) scale(1); }
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  45% {
+    transform: translateY(-2px) scale(1.015);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
 }
 
 /* Respeita reduce motion */
@@ -1921,6 +1840,7 @@ html[data-theme="light"] #preco .cta__now {
   .btn--cta-float {
     animation: none !important;
   }
+  .btn--highlight,
   .btn--highlight:hover,
   .btn--highlight:active {
     transform: none !important;
