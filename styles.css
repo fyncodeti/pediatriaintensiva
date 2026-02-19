@@ -1628,3 +1628,133 @@ html[data-theme="light"] .input {
   position: relative;
   transform: translateZ(18px);
 }
+
+/* =========================
+   CTA Preço: hierarquia forte do preço
+   ========================= */
+
+#preco .cta__price.cta__price--strong {
+  display: grid;
+  gap: 6px;
+  align-items: start;
+  margin: 0 0 var(--space-2);
+  color: var(--muted);
+  font-size: var(--fs-2);
+  max-width: 52ch;
+}
+
+#preco .cta__was {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: baseline;
+  width: fit-content;
+  position: relative;
+  opacity: 0.92;
+}
+
+#preco .cta__was .muted {
+  font-size: 0.95em;
+}
+
+/* Risca o preço antigo de forma discreta, sem poluir */
+#preco .cta__was::after {
+  content: "";
+  position: absolute;
+  left: -2px;
+  right: -2px;
+  top: 52%;
+  height: 1.6px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--danger) 62%, transparent);
+  opacity: 0.65;
+  transform: rotate(-1deg);
+  pointer-events: none;
+}
+
+#preco .cta__now {
+  display: inline-block;
+  width: fit-content;
+  color: var(--text);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1.02;
+  font-size: clamp(2.25rem, 1.9rem + 2.2vw, 3.35rem);
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, #ffffff 88%, var(--brand)),
+    color-mix(in srgb, #ffffff 78%, var(--brand)),
+    color-mix(in srgb, #ffffff 78%, var(--brand-2))
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
+}
+
+html[data-theme="light"] #preco .cta__now {
+  text-shadow: 0 10px 26px rgba(10, 18, 32, 0.12);
+}
+
+#preco .cta__terms {
+  font-size: 0.98em;
+}
+
+/* Em telas bem pequenas, dá um foco extra no preço sem aumentar demais o bloco */
+@media (max-width: 520px) {
+  #preco .cta__price.cta__price--strong {
+    gap: 4px;
+  }
+  #preco .cta__terms {
+    font-size: 0.95em;
+  }
+}
+
+/* =========================
+   Botão CTA principal: mais forte e com hierarquia clara
+   ========================= */
+
+.btn--highlight {
+  padding: 14px 18px;
+  border-radius: 16px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  border-color: transparent;
+  color: #fff;
+
+  background:
+    radial-gradient(900px 240px at 30% 10%, rgba(238, 178, 17, 0.22), transparent 60%),
+    linear-gradient(135deg, color-mix(in srgb, var(--brand) 85%, #ffffff 0%), color-mix(in srgb, var(--brand-2) 65%, var(--brand)));
+  box-shadow: var(--glow-brand);
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+.btn--highlight:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--glow-brand), 0 22px 46px rgba(51, 105, 232, 0.18);
+}
+
+.btn--highlight:active {
+  transform: translateY(0);
+}
+
+.btn--highlight:focus-visible {
+  box-shadow: var(--focus), 0 0 0 1px rgba(255, 255, 255, 0.22), var(--glow-brand);
+}
+
+/* Mantém o CTA forte em mobile sem quebrar layout */
+@media (max-width: 700px) {
+  .cta__actions .btn--highlight {
+    width: 100%;
+  }
+}
+
+/* Respeito a reduce motion: remove lift */
+@media (prefers-reduced-motion: reduce) {
+  .btn--highlight,
+  .btn--highlight:hover,
+  .btn--highlight:active {
+    transform: none !important;
+  }
+}

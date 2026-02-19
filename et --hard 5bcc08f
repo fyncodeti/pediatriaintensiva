@@ -1,0 +1,23 @@
+[33mac62224[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m HEAD@{Wed Feb 18 15:00:19 2026}: pull origin main --rebase (finish): returning to refs/heads/main
+[33mac62224[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m HEAD@{Wed Feb 18 15:00:19 2026}: pull origin main --rebase (start): checkout ac6222486131090dc6aadea3bc6b53b15d0943ad
+[33m5bcc08f[m HEAD@{Wed Feb 18 14:20:09 2026}: commit: icons
+[33mff3a6d3[m HEAD@{Wed Feb 18 11:33:30 2026}: commit: interatividade
+[33mb932c7d[m HEAD@{Wed Feb 18 11:22:12 2026}: commit: interatividade
+[33mf63cae2[m HEAD@{Wed Feb 18 11:01:46 2026}: pull: Fast-forward
+[33md6d7b0a[m HEAD@{Fri Feb 13 16:09:33 2026}: commit: curso-medico
+[33medbc50e[m HEAD@{Fri Feb 13 15:51:00 2026}: commit: curso-enfermagem
+[33mc97df4a[m HEAD@{Fri Feb 13 15:08:39 2026}: commit: redimensionamento
+[33m1c789c1[m HEAD@{Fri Feb 13 14:17:30 2026}: commit: por eles
+[33m21e75b7[m HEAD@{Thu Feb 12 15:06:15 2026}: commit: cursos
+[33mc382b2d[m HEAD@{Thu Feb 12 14:21:27 2026}: commit: whatsapp icon
+[33m876d684[m HEAD@{Thu Feb 12 13:58:04 2026}: commit: incluir cores
+[33m5409bc1[m HEAD@{Wed Feb 11 23:02:01 2026}: commit: ponto
+[33m07649ba[m HEAD@{Wed Feb 11 22:53:10 2026}: commit: update'img
+[33m7b0fc79[m HEAD@{Wed Feb 11 22:44:52 2026}: commit: update img
+[33m2b50175[m HEAD@{Wed Feb 11 21:26:04 2026}: commit: images
+[33ma775663[m HEAD@{Wed Feb 11 15:41:50 2026}: commit: new paleta
+[33m83f7e9b[m HEAD@{Wed Feb 11 14:36:14 2026}: commit: imgs & blank
+[33m9cc6633[m HEAD@{Wed Feb 11 14:18:14 2026}: commit: new modifications
+[33m0510c84[m HEAD@{Fri Feb 6 17:16:56 2026}: commit: curso
+[33m7feac05[m HEAD@{Fri Feb 6 17:15:46 2026}: Branch: renamed refs/heads/master to refs/heads/main
+[33m7feac05[m HEAD@{Fri Feb 6 17:15:46 2026}: commit (initial): first commit
