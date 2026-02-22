@@ -80,8 +80,8 @@
   --split-gap: clamp(18px, 2.4vw, 34px);
   --split-radius: clamp(18px, 2.4vw, 32px);
 
-  /* Cores de base para modo claro */
-  --split-light-bg: #ffffff;
+  /* Cores de base para modo claro (final) */
+  --split-light-bg: #fbfaf6; /* off-white quente (papel) */
   --split-light-text: rgb(12 15 20 / 0.92);
   --split-light-muted: rgb(12 15 20 / 0.70);
   --split-light-border: rgb(12 15 20 / 0.10);
@@ -313,6 +313,22 @@ html[data-theme="light"] body::after {
   position: relative;
 }
 
+.section__head {
+  margin-bottom: var(--space-6);
+}
+
+.section__title {
+  margin: 0 0 var(--space-2);
+  font-size: var(--fs-4);
+  letter-spacing: -0.02em;
+}
+
+.section__subtitle {
+  margin: 0;
+  color: var(--muted);
+  max-width: 68ch;
+}
+
 /* Section muted (mantida, mas agora geralmente você vai preferir section--split) */
 .section--muted {
   position: relative;
@@ -342,22 +358,6 @@ html[data-theme="light"] .section--muted::before {
     rgb(10 18 32 / 0.02) 65%,
     transparent 100%
   );
-}
-
-.section__head {
-  margin-bottom: var(--space-6);
-}
-
-.section__title {
-  margin: 0 0 var(--space-2);
-  font-size: var(--fs-4);
-  letter-spacing: -0.02em;
-}
-
-.section__subtitle {
-  margin: 0;
-  color: var(--muted);
-  max-width: 68ch;
 }
 
 /* =========================================================
@@ -742,6 +742,12 @@ body[data-page="med"] .section.hero {
   grid-template-columns: 1fr;
 }
 
+@media (min-width: 980px) {
+  .hero__grid {
+    grid-template-columns: 1.2fr 0.8fr;
+  }
+}
+
 .hero__title {
   margin: 0 0 var(--space-3);
   font-size: var(--fs-5);
@@ -797,12 +803,6 @@ body[data-page="med"] .section.hero {
 
 .hero--course .hero__title {
   font-size: clamp(2rem, 1.7rem + 2.4vw, 3.1rem);
-}
-
-@media (min-width: 980px) {
-  .hero__grid {
-    grid-template-columns: 1.2fr 0.8fr;
-  }
 }
 
 .eyebrow {
@@ -1181,11 +1181,15 @@ body[data-page="med"] .section.hero {
   overflow: hidden;
   position: relative;
   background:
-    radial-gradient(circle at 30% 30%, rgb(var(--brand-rgb) / 0.32), transparent 60%),
-    radial-gradient(circle at 70% 70%, rgb(var(--brand2-rgb) / 0.22), transparent 62%),
-    linear-gradient(135deg, color-mix(in srgb, var(--brand) 86%, #000), color-mix(in srgb, var(--brand-2) 70%, var(--bg)));
+    radial-gradient(circle at 30% 30%, rgb(var(--brand-rgb) / 0.16), transparent 62%),
+    radial-gradient(circle at 70% 70%, rgb(var(--brand2-rgb) / 0.10), transparent 64%),
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--brand) 70%, #000),
+      color-mix(in srgb, var(--brand-2) 30%, var(--split-light-bg))
+    );
   border: 1px solid color-mix(in srgb, var(--border) 82%, transparent);
-  box-shadow: var(--glow-brand);
+  box-shadow: 0 10px 28px rgb(12 15 20 / 0.10);
   display: grid;
   place-items: center;
 }
@@ -1234,8 +1238,6 @@ body[data-page="med"] .section.hero {
     radial-gradient(700px 350px at 10% 90%, rgb(var(--brand2-rgb) / 0.08), transparent 60%),
     var(--glass);
   box-shadow: var(--shadow-soft);
-
-  /* centraliza no desktop também */
   text-align: center;
 }
 
@@ -1256,8 +1258,6 @@ body[data-page="med"] .section.hero {
   margin: 0 0 var(--space-3);
   color: var(--muted);
   max-width: 75ch;
-
-  /* centraliza o bloco de texto (max-width) */
   margin-left: auto;
   margin-right: auto;
 }
@@ -1267,12 +1267,9 @@ body[data-page="med"] .section.hero {
   flex-wrap: wrap;
   gap: 12px;
   margin-top: var(--space-4);
-
-  /* centraliza os botões no desktop também */
   justify-content: center;
 }
 
-/* Mobile: empilha e dá largura boa */
 @media (max-width: 720px) {
   .section--callout .callout__actions {
     flex-direction: column;
@@ -2061,21 +2058,14 @@ html[data-theme="light"] #preco .cta__now {
    Split sections
    ========================================================= */
 
-/* Base da section split */
 .section.section--split {
   position: relative;
-  /* margin-block: var(--split-gap); */
-  /* border-radius: var(--split-radius); */
   isolation: isolate;
-  /* overflow: hidden; */
   padding-block: var(--space-8);
-
-  /* Um recorte premium sem virar faixa dura */
   border: 1px solid color-mix(in srgb, var(--border) 90%, transparent);
   box-shadow: 0 18px 55px rgb(0 0 0 / 0.18);
 }
 
-/* Fundo da section */
 .section.section--split::before {
   content: "";
   position: absolute;
@@ -2085,7 +2075,6 @@ html[data-theme="light"] #preco .cta__now {
   background: var(--split-bg);
 }
 
-/* Transição suave no topo e no rodapé, sem criar linhas */
 .section.section--split::after {
   content: "";
   position: absolute;
@@ -2098,7 +2087,6 @@ html[data-theme="light"] #preco .cta__now {
   opacity: var(--split-fade, 0.55);
 }
 
-/* Mantém respiro lateral sem mexer no layout */
 .section.section--split > .container {
   padding-inline: clamp(12px, 2vw, 18px);
 }
@@ -2108,11 +2096,6 @@ html[data-theme="light"] #preco .cta__now {
 .section.hero.section--split::after {
   display: none;
 }
-
-/* =========================================================
-   Alternância: CLARO (1) / ESCURO (2) / CLARO (3) / ESCURO (4) ...
-   Importante: aqui a gente troca os TOKENS da section também
-   ========================================================= */
 
 /* CLARO */
 main > .section.section--split:nth-of-type(odd),
@@ -2124,18 +2107,19 @@ main > .section.section--split:nth-of-type(odd),
   --surface: var(--split-light-surface);
   --surface-2: var(--split-light-surface2);
 
-  /* Glass recalculado no claro */
   --glass: color-mix(in srgb, var(--surface) 86%, transparent);
   --glass-2: color-mix(in srgb, var(--surface-2) 86%, transparent);
 
-  /* Fundo claro usando branco + brand */
   --split-bg:
-    radial-gradient(900px 520px at 18% 18%, rgb(var(--brand-rgb) / 0.22), transparent 62%),
-    radial-gradient(900px 520px at 86% 84%, rgb(var(--brand2-rgb) / 0.12), transparent 64%),
-    linear-gradient(180deg, #ffffff, color-mix(in srgb, #ffffff 88%, rgb(var(--brand-rgb) / 1)));
+    radial-gradient(900px 520px at 18% 18%, rgb(var(--brand-rgb) / 0.10), transparent 64%),
+    radial-gradient(900px 520px at 86% 84%, rgb(var(--brand2-rgb) / 0.06), transparent 66%),
+    linear-gradient(
+      180deg,
+      var(--split-light-bg),
+      color-mix(in srgb, var(--split-light-bg) 92%, rgb(var(--brand-rgb) / 1))
+    );
 
-  /* Fade mais leve no claro */
-  --split-fade: 0.35;
+  --split-fade: 0.28;
 }
 
 /* ESCURO */
@@ -2151,7 +2135,6 @@ main > .section.section--split:nth-of-type(even),
   --glass: color-mix(in srgb, var(--surface) 78%, transparent);
   --glass-2: color-mix(in srgb, var(--surface-2) 72%, transparent);
 
-  /* Fundo escuro com glow mais forte (pra contrastar com o claro) */
   --split-bg:
     radial-gradient(900px 520px at 18% 18%, rgb(var(--brand-rgb) / 0.22), transparent 62%),
     radial-gradient(900px 520px at 86% 84%, rgb(var(--brand2-rgb) / 0.18), transparent 64%),
@@ -2160,7 +2143,7 @@ main > .section.section--split:nth-of-type(even),
   --split-fade: 0.60;
 }
 
-/* Ajustes finos: botões e pills ficam sempre legíveis no modo claro */
+/* Ajustes finos no claro */
 .section.section--split:nth-of-type(odd) .btn--secondary,
 .section.section--split:nth-of-type(odd) .pill,
 .section.section--split:nth-of-type(odd) .card,
@@ -2169,6 +2152,55 @@ main > .section.section--split:nth-of-type(even),
 .section.section--split:nth-of-type(odd) .accordion__item,
 .section.section--split:nth-of-type(odd) .guarantee {
   box-shadow: 0 10px 28px rgb(12 15 20 / 0.10);
+  background: color-mix(in srgb, #ffffff 70%, transparent);
+  border-color: color-mix(in srgb, var(--border) 80%, transparent);
+}
+
+.section.section--split:nth-of-type(odd) .manifesto {
+  background: color-mix(in srgb, #ffffff 70%, transparent);
+  border-color: color-mix(in srgb, var(--border) 80%, transparent);
+  box-shadow: 0 10px 28px rgb(12 15 20 / 0.10);
+}
+
+.section.section--split:nth-of-type(odd) .manifesto__text {
+  color: color-mix(in srgb, var(--text) 92%, var(--muted));
+}
+
+/* Fix: textos fixos brancos no split claro (odd) */
+.section.section--split:nth-of-type(odd) .course__media-title {
+  color: var(--text);
+}
+
+.section.section--split:nth-of-type(odd) .course__media-subtitle {
+  color: color-mix(in srgb, var(--text) 82%, transparent);
+}
+
+.section.section--split:nth-of-type(odd) :where(.media-card__title, .drawer__title, .brand, .nav__link, .accordion__trigger) {
+  color: var(--text);
+}
+
+.section.section--split:nth-of-type(odd) :where(.media-card__subtitle, .card__text, .section__subtitle, .muted, .cta__meta, .cta__price) {
+  color: var(--muted);
+}
+
+.section.section--split:nth-of-type(odd) :is(h1, h2, h3, h4) {
+  color: var(--text);
+}
+
+.section.section--split:nth-of-type(odd) :is(p, li) {
+  color: var(--muted);
+}
+
+.section.section--split:nth-of-type(odd) :is(article, .contact, .contact__items) {
+  color: var(--text);
+}
+
+.section.section--split:nth-of-type(odd) :is(article p, article li, article a, .contact__items a, .link-row span) {
+  color: var(--text);
+}
+
+.section.section--split:nth-of-type(odd) :is(article ul, article ol) {
+  color: var(--muted);
 }
 
 /* Mobile */
@@ -2183,124 +2215,113 @@ main > .section.section--split:nth-of-type(even),
 }
 
 /* =========================================================
-   Fix: textos fixos brancos no split claro (odd)
-   Mantém regras, só sobrescreve cores hardcoded
+   Ticker / Marquee (entre HERO e seção seguinte)
+   Corrigido: sem sobreposição + fundo amarelo da paleta
    ========================================================= */
 
-.section.section--split:nth-of-type(odd) .course__media-title {
-  color: var(--text);
+.ticker {
+  position: relative;
+  margin: 0;
+  padding: 0;
 }
 
-.section.section--split:nth-of-type(odd) .course__media-subtitle {
-  color: color-mix(in srgb, var(--text) 82%, transparent);
-}
-
-/* Se tiver outros pontos com branco fixo, estes ajudam sem quebrar botões */
-.section.section--split:nth-of-type(odd) :where(.media-card__title, .drawer__title, .brand, .nav__link, .accordion__trigger) {
-  color: var(--text);
-}
-
-.section.section--split:nth-of-type(odd) :where(.media-card__subtitle, .card__text, .section__subtitle, .muted, .cta__meta, .cta__price) {
-  color: var(--muted);
-}
-
-/* =========================================================
-   Fix: headings e article do contato no split claro
-   ========================================================= */
-
-.section.section--split:nth-of-type(odd) :is(h1, h2, h3, h4) {
-  color: var(--text);
-}
-
-.section.section--split:nth-of-type(odd) :is(p, li) {
-  color: var(--muted);
-}
-
-/* Itens do contato (article e filhos comuns) */
-.section.section--split:nth-of-type(odd) :is(article, .contact, .contact__items) {
-  color: var(--text);
-}
-
-.section.section--split:nth-of-type(odd) :is(article p, article li, article a, .contact__items a, .link-row span) {
-  color: var(--text);
-}
-
-/* Se você usa listas dentro do contato */
-.section.section--split:nth-of-type(odd) :is(article ul, article ol) {
-  color: var(--muted);
-}
-
-/* =========================================================
-   Split claro mais premium (off-white quente + glow controlado)
-   ========================================================= */
-
-:root{
-  /* antes era branco puro */
-  --split-light-bg: #fbfaf6; /* off-white quente (papel) */
-  --split-light-text: rgb(12 15 20 / 0.92);
-  --split-light-muted: rgb(12 15 20 / 0.70);
-  --split-light-border: rgb(12 15 20 / 0.10);
-  --split-light-surface: rgb(12 15 20 / 0.04);
-  --split-light-surface2: rgb(12 15 20 / 0.06);
-}
-
-/* CLARO */
-main > .section.section--split:nth-of-type(odd),
-.section.section--split:nth-of-type(odd) {
-  /* mantém seus tokens (text/muted/border/surface) como você já tinha */
-
-  /* Fundo claro: menos amarelo, mais neutro e sofisticado */
-  --split-bg:
-    radial-gradient(900px 520px at 18% 18%, rgb(var(--brand-rgb) / 0.10), transparent 64%),
-    radial-gradient(900px 520px at 86% 84%, rgb(var(--brand2-rgb) / 0.06), transparent 66%),
-    linear-gradient(180deg,
-      var(--split-light-bg),
-      color-mix(in srgb, var(--split-light-bg) 92%, rgb(var(--brand-rgb) / 1))
-    );
-
-  /* Fade mais leve ainda */
-  --split-fade: 0.28;
-}
-
-/* Extra: cards no claro ficam mais “paper” e menos amarelo */
-.section.section--split:nth-of-type(odd) .card,
-.section.section--split:nth-of-type(odd) .pill,
-.section.section--split:nth-of-type(odd) .badge,
-.section.section--split:nth-of-type(odd) .note,
-.section.section--split:nth-of-type(odd) .accordion__item,
-.section.section--split:nth-of-type(odd) .guarantee {
-  background: color-mix(in srgb, #ffffff 70%, transparent);
-  border-color: color-mix(in srgb, var(--border) 80%, transparent);
-}
-
-/* =========================================================
-   Split claro: incluir o Manifesto no visual "paper"
-   ========================================================= */
-
-.section.section--split:nth-of-type(odd) .manifesto {
-  background: color-mix(in srgb, #ffffff 70%, transparent);
-  border-color: color-mix(in srgb, var(--border) 80%, transparent);
-  box-shadow: 0 10px 28px rgb(12 15 20 / 0.10);
-}
-
-.section.section--split:nth-of-type(odd) .manifesto__text {
-  color: color-mix(in srgb, var(--text) 92%, var(--muted));
-}
-
-/* Deixa o "glow" do logo mais sutil no claro */
-.section.section--split:nth-of-type(odd) .manifesto__logoWrap {
-  box-shadow: 0 10px 28px rgb(12 15 20 / 0.10);
-  border-color: color-mix(in srgb, var(--border) 80%, transparent);
-}
-
-/* Opcional: se o amarelo ainda estiver brigando, reduz o brilho do fundo do logo */
-.section.section--split:nth-of-type(odd) .manifesto__logoWrap {
+.ticker__mask {
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  border-top: 1px solid color-mix(in srgb, rgb(var(--brand-rgb) / 0.55), transparent);
+  border-bottom: 1px solid color-mix(in srgb, rgb(var(--brand-rgb) / 0.55), transparent);
   background:
-    radial-gradient(circle at 30% 30%, rgb(var(--brand-rgb) / 0.16), transparent 62%),
-    radial-gradient(circle at 70% 70%, rgb(var(--brand2-rgb) / 0.10), transparent 64%),
+    radial-gradient(900px 120px at 20% 40%, rgb(255 255 255 / 0.20), transparent 60%),
+    radial-gradient(900px 120px at 80% 60%, rgb(0 0 0 / 0.10), transparent 62%),
     linear-gradient(
-      135deg,
-      color-mix(in srgb, var(--brand) 70%, #000),
-      color-mix(in srgb, var(--brand-2) 30%, var(--split-light-bg))
+      180deg,
+      color-mix(in srgb, var(--brand) 92%, #ffffff),
+      color-mix(in srgb, var(--brand) 86%, #000000)
     );
+  box-shadow: 0 14px 34px rgb(0 0 0 / 0.18);
+}
+
+.ticker__mask::before,
+.ticker__mask::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 84px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.ticker__mask::before {
+  left: 0;
+  background: linear-gradient(90deg, var(--brand), transparent);
+}
+
+.ticker__mask::after {
+  right: 0;
+  background: linear-gradient(270deg, var(--brand), transparent);
+}
+
+.ticker__track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: tickerMove 26s linear infinite;
+}
+
+.ticker__row {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 0;
+  padding-left: max(16px, env(safe-area-inset-left));
+  padding-right: max(16px, env(safe-area-inset-right));
+}
+
+.ticker__item {
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  font-size: 0.86rem;
+  color: rgb(12 15 20 / 0.92);
+  white-space: nowrap;
+}
+
+.ticker__dot {
+  opacity: 0.65;
+  color: rgb(12 15 20 / 0.70);
+}
+
+@keyframes tickerMove {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 720px) {
+  .ticker__row {
+    padding: 16px 0;
+    gap: 12px;
+  }
+  .ticker__track {
+    animation-duration: 28s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ticker__track {
+    animation: none !important;
+    transform: none !important;
+  }
+  .ticker__mask {
+    overflow-x: auto;
+  }
+  .ticker__mask::before,
+  .ticker__mask::after {
+    display: none;
+  }
 }
