@@ -1234,6 +1234,9 @@ body[data-page="med"] .section.hero {
     radial-gradient(700px 350px at 10% 90%, rgb(var(--brand2-rgb) / 0.08), transparent 60%),
     var(--glass);
   box-shadow: var(--shadow-soft);
+
+  /* centraliza no desktop também */
+  text-align: center;
 }
 
 .callout__quote {
@@ -1253,6 +1256,10 @@ body[data-page="med"] .section.hero {
   margin: 0 0 var(--space-3);
   color: var(--muted);
   max-width: 75ch;
+
+  /* centraliza o bloco de texto (max-width) */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .callout__actions {
@@ -1260,6 +1267,22 @@ body[data-page="med"] .section.hero {
   flex-wrap: wrap;
   gap: 12px;
   margin-top: var(--space-4);
+
+  /* centraliza os botões no desktop também */
+  justify-content: center;
+}
+
+/* Mobile: empilha e dá largura boa */
+@media (max-width: 720px) {
+  .section--callout .callout__actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .section--callout .callout__actions .btn {
+    width: 100%;
+    max-width: 420px;
+  }
 }
 
 /* Badges */
