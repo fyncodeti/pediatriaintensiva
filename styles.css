@@ -654,18 +654,29 @@ html[data-theme="light"] .section--muted::before {
 }
 
 /* =========================================================
-   Hero
+   Hero (background responsivo)
    ========================================================= */
 
 .section.hero {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  min-height: clamp(520px, 72vh, 860px);
 
+  /* Mais estável em mobile moderno */
+  min-height: clamp(520px, 72svh, 860px);
+
+  /* Defaults */
   --hero-bg: url("./assets/img/bg/home_1.png");
   --hero-bg-mobile: url("./assets/img/bg/home_1080_x_1920.svg");
   --hero-bg-xl: url("./assets/img/bg/home_2560_x_1440_1.png");
+
+  /* Controle de foco do recorte */
+  --hero-pos: center;
+  --hero-pos-mobile: center top;
+
+  /* Background efetivo (pode ser trocado por media queries) */
+  --hero-bg-active: var(--hero-bg);
+  --hero-pos-active: var(--hero-pos);
 }
 
 .section.hero::before {
@@ -674,12 +685,14 @@ html[data-theme="light"] .section--muted::before {
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background-image: var(--hero-bg);
+
+  background-image: var(--hero-bg-active);
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: var(--hero-pos-active);
   background-size: cover;
 }
 
+/* Overlay */
 .section.hero::after {
   content: "";
   position: absolute;
@@ -689,16 +702,18 @@ html[data-theme="light"] .section--muted::before {
   background: transparent;
 }
 
+.section.hero .hero__banner,
 .section.hero .container,
 .section.hero .hero__grid {
   position: relative;
   z-index: 2;
 }
 
+/* 1) Mobile por largura */
 @media (max-width: 720px) {
-  .section.hero::before {
-    background-image: var(--hero-bg-mobile);
-    background-position: center top;
+  .section.hero {
+    --hero-bg-active: var(--hero-bg-mobile);
+    --hero-pos-active: var(--hero-pos-mobile);
   }
 
   .section.hero::after {
@@ -711,9 +726,28 @@ html[data-theme="light"] .section--muted::before {
   }
 }
 
+/* 2) Mobile por proporção (pega celular em paisagem e tablets baixos) */
+@media (max-aspect-ratio: 3/4) {
+  .section.hero {
+    --hero-bg-active: var(--hero-bg-mobile);
+    --hero-pos-active: var(--hero-pos-mobile);
+  }
+}
+
+/* 3) XL por largura */
 @media (min-width: 1200px) {
-  .section.hero::before {
-    background-image: var(--hero-bg-xl);
+  .section.hero {
+    --hero-bg-active: var(--hero-bg-xl);
+  }
+}
+
+/* 4) Retina: usa o XL como 2x quando fizer sentido */
+@media (min-width: 980px) and (min-resolution: 2dppx) {
+  .section.hero {
+    --hero-bg-active: image-set(
+      var(--hero-bg) 1x,
+      var(--hero-bg-xl) 2x
+    );
   }
 }
 
@@ -721,18 +755,28 @@ body[data-page="home"] .section.hero {
   --hero-bg: url("./assets/img/bg/home_1.png");
   --hero-bg-mobile: url("./assets/img/bg/home_1080_x_1920.svg");
   --hero-bg-xl: url("./assets/img/bg/home_2560_x_1440_1.png");
+
+  --hero-pos: center;
+  --hero-pos-mobile: center top;
 }
 
 body[data-page="enf"] .section.hero {
   --hero-bg: url("./assets/img/bg/pedin_enf_1.png");
   --hero-bg-mobile: url("./assets/img/bg/pedin_enf_1080_x_1920.svg");
   --hero-bg-xl: url("./assets/img/bg/pedin_enf_2560_x_1440_1.png");
+
+  /* exemplo, ajuste conforme o foco da arte */
+  --hero-pos: center 35%;
+  --hero-pos-mobile: center top;
 }
 
 body[data-page="med"] .section.hero {
   --hero-bg: url("./assets/img/bg/pedin_1.png");
   --hero-bg-mobile: url("./assets/img/bg/pedin_1080_x_1920.svg");
   --hero-bg-xl: url("./assets/img/bg/pedin_2560_x_1440_1.png");
+
+  --hero-pos: center 30%;
+  --hero-pos-mobile: center top;
 }
 
 .hero__grid {
@@ -2380,3 +2424,46 @@ main > .section.section--split:nth-of-type(even),
     transform: translateX(clamp(-22px, -1.6vw, -46px));
   }
 } */
+
+.hero__banner {
+  display: none;
+}
+
+@media (max-width: 720px) {
+  /* no mobile: texto abaixo da imagem */
+  .section.hero {
+    min-height: unset;
+    padding-top: 0;
+    padding-bottom: var(--space-6);
+  }
+
+  /* desliga background do hero inteiro */
+  .section.hero::before,
+  .section.hero::after {
+    display: none;
+  }
+
+  /* imagem full width */
+  .hero__banner {
+    display: block;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+
+    height: clamp(280px, 62vw, 520px);
+
+    background-image: var(--hero-bg-mobile);
+    background-repeat: no-repeat;
+    background-position: var(--hero-pos-mobile, center top);
+    background-size: cover;
+  }
+
+  /* espaçamento para o conteúdo não colar na imagem */
+  .section.hero .container {
+    padding-top: var(--space-5);
+  }
+
+  .hero__grid {
+    gap: var(--space-5);
+  }
+}
