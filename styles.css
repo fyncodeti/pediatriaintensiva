@@ -1,11 +1,11 @@
 /* =========================================================
    Pediatria Intensiva - Styles (sem frameworks)
    Objetivos: premium, responsivo, acessível, performático
+   Observação: reorganizado e simplificado (sem mudar o comportamento)
    ========================================================= */
 
 /* =========================================================
    Design tokens (CSS Variables)
-   Importante:
    - Paleta e tons por página ficam em body[data-page="..."]
    - Tokens derivados usam RGB vars para funcionar com alpha
    ========================================================= */
@@ -80,8 +80,8 @@
   --split-gap: clamp(18px, 2.4vw, 34px);
   --split-radius: clamp(18px, 2.4vw, 32px);
 
-  /* Cores de base para modo claro (final) */
-  --split-light-bg: #fbfaf6; /* off-white quente (papel) */
+  /* Cores de base para modo claro */
+  --split-light-bg: #fbfaf6;
   --split-light-text: rgb(12 15 20 / 0.92);
   --split-light-muted: rgb(12 15 20 / 0.70);
   --split-light-border: rgb(12 15 20 / 0.10);
@@ -124,10 +124,9 @@ html[data-theme="light"] {
 }
 
 /* =========================================================
-   Paleta por pagina
+   Paleta por página
    ========================================================= */
 
-/* Index (Home) */
 body[data-page="home"] {
   --bg: #0c0f14;
   --text: rgb(255 255 255 / 0.94);
@@ -144,7 +143,6 @@ body[data-page="home"] {
   --glow-green: 0 0 0 1px rgb(var(--brand2-rgb) / 0.12), 0 18px 40px rgb(var(--brand2-rgb) / 0.08);
 }
 
-/* Curso Enfermagem */
 body[data-page="enf"] {
   --bg: #0c0f14;
   --text: rgb(255 255 255 / 0.94);
@@ -159,7 +157,6 @@ body[data-page="enf"] {
   --warn-rgb: 239 207 64;
 }
 
-/* Curso Medico */
 body[data-page="med"] {
   --bg: #0c0f14;
   --text: rgb(255 255 255 / 0.94);
@@ -238,7 +235,7 @@ input {
 }
 
 /* =========================================================
-   Background global premium tech (baseado na paleta)
+   Background global premium tech
    ========================================================= */
 
 body::before {
@@ -329,7 +326,7 @@ html[data-theme="light"] body::after {
   max-width: 68ch;
 }
 
-/* Section muted (mantida, mas agora geralmente você vai preferir section--split) */
+/* Section muted */
 .section--muted {
   position: relative;
   background: transparent;
@@ -674,7 +671,7 @@ html[data-theme="light"] .section--muted::before {
   --hero-pos: center;
   --hero-pos-mobile: center top;
 
-  /* Background efetivo (pode ser trocado por media queries) */
+  /* Background efetivo */
   --hero-bg-active: var(--hero-bg);
   --hero-pos-active: var(--hero-pos);
 }
@@ -685,7 +682,6 @@ html[data-theme="light"] .section--muted::before {
   inset: 0;
   z-index: 0;
   pointer-events: none;
-
   background-image: var(--hero-bg-active);
   background-repeat: no-repeat;
   background-position: var(--hero-pos-active);
@@ -709,7 +705,7 @@ html[data-theme="light"] .section--muted::before {
   z-index: 2;
 }
 
-/* 1) Mobile por largura */
+/* Mobile por largura */
 @media (max-width: 720px) {
   .section.hero {
     --hero-bg-active: var(--hero-bg-mobile);
@@ -726,7 +722,7 @@ html[data-theme="light"] .section--muted::before {
   }
 }
 
-/* 2) Mobile por proporção (pega celular em paisagem e tablets baixos) */
+/* Mobile por proporção */
 @media (max-aspect-ratio: 3/4) {
   .section.hero {
     --hero-bg-active: var(--hero-bg-mobile);
@@ -734,14 +730,14 @@ html[data-theme="light"] .section--muted::before {
   }
 }
 
-/* 3) XL por largura */
+/* XL por largura */
 @media (min-width: 1200px) {
   .section.hero {
     --hero-bg-active: var(--hero-bg-xl);
   }
 }
 
-/* 4) Retina: usa o XL como 2x quando fizer sentido */
+/* Retina */
 @media (min-width: 980px) and (min-resolution: 2dppx) {
   .section.hero {
     --hero-bg-active: image-set(
@@ -751,11 +747,11 @@ html[data-theme="light"] .section--muted::before {
   }
 }
 
+/* Paleta de hero por página */
 body[data-page="home"] .section.hero {
   --hero-bg: url("./assets/img/bg/home_1.png");
   --hero-bg-mobile: url("./assets/img/bg/home_1080_x_1920.svg");
   --hero-bg-xl: url("./assets/img/bg/home_2560_x_1440_1.png");
-
   --hero-pos: center;
   --hero-pos-mobile: center top;
 }
@@ -764,8 +760,6 @@ body[data-page="enf"] .section.hero {
   --hero-bg: url("./assets/img/bg/pedin_enf_1.png");
   --hero-bg-mobile: url("./assets/img/bg/pedin_enf_1080_x_1920.svg");
   --hero-bg-xl: url("./assets/img/bg/pedin_enf_2560_x_1440_1.png");
-
-  /* exemplo, ajuste conforme o foco da arte */
   --hero-pos: center 35%;
   --hero-pos-mobile: center top;
 }
@@ -774,7 +768,6 @@ body[data-page="med"] .section.hero {
   --hero-bg: url("./assets/img/bg/pedin_1.png");
   --hero-bg-mobile: url("./assets/img/bg/pedin_1080_x_1920.svg");
   --hero-bg-xl: url("./assets/img/bg/pedin_2560_x_1440_1.png");
-
   --hero-pos: center 30%;
   --hero-pos-mobile: center top;
 }
@@ -1093,14 +1086,17 @@ body[data-page="med"] .section.hero {
   color: color-mix(in srgb, var(--text) 88%, var(--warn));
 }
 
-/* Courses */
+/* =========================================================
+   Courses
+   ========================================================= */
+
 .course {
   padding: 0;
   overflow: hidden;
 }
 
-/* COURSES: mídia com logo centralizada e sem “cortar” no mobile */
-.course__media{
+/* Mídia (logo centralizada e sem cortar no mobile) */
+.course__media {
   position: relative;
   overflow: hidden;
   border-bottom: 0;
@@ -1108,68 +1104,18 @@ body[data-page="med"] .section.hero {
 
   display: grid;
   place-items: center;
-
   padding: 22px;
 
-  /* Mantém o look no desktop */
   aspect-ratio: 16 / 9;
-
-  /* Garante espaço suficiente para a logo (não reduz a imagem) */
   min-height: calc(var(--course-logo-h, 264px) + 44px);
 }
 
-/* Mobile: deixa a altura livre para nunca cortar a logo */
-@media (max-width: 720px){
-  .course__media{
+@media (max-width: 720px) {
+  .course__media {
     aspect-ratio: auto;
     padding-block: 26px;
     min-height: calc(var(--course-logo-h, 264px) + 52px);
   }
-}
-
-/* Logo: tamanho fixo por variável, sem estourar o container */
-.course__media-logo{
-  height: var(--course-logo-h, 264px);
-  width: auto;
-  max-height: 100%;
-}
-
-.course__media--enf,
-.course__media--med{
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;          /* mesmo “crop” */
-}
-
-.course__media-inner--logo{
-  width: 100%;
-  height: 100%;
-  display: grid;
-  place-items: center;
-}
-
-/* padrão para qualquer logo */
-.course__media-logo{
-  height: var(--course-logo-h, 64px);
-  width: auto;
-  max-width: 82%;
-  object-fit: contain;
-  transform: translateY(var(--course-logo-y, 0px)) scale(var(--course-logo-scale, 1));
-  filter: drop-shadow(0 12px 24px rgb(0 0 0 / 0.35));
-}
-
-/* Enf: exemplo, aumenta um pouco e desce 1px */
-.course__media--enf{
-  --course-logo-h: 264px;
-  --course-logo-y: 1px;
-  --course-logo-scale: 1.04;
-}
-
-/* Med: exemplo, mantém e sobe 1px */
-.course__media--med{
-  --course-logo-h: 264px;
-  --course-logo-y: -1px;
-  --course-logo-scale: 1;
 }
 
 .course__media::before {
@@ -1189,6 +1135,48 @@ body[data-page="med"] .section.hero {
   z-index: 1;
 }
 
+.course__media-inner--logo {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+}
+
+/* Logo (unificado, preservando o resultado final) */
+.course__media-logo {
+  height: var(--course-logo-h, 64px);
+  width: auto;
+  max-width: 82%;
+  max-height: 100%;
+  object-fit: contain;
+  transform: translateY(var(--course-logo-y, 0px)) scale(var(--course-logo-scale, 1));
+  filter: drop-shadow(0 12px 24px rgb(0 0 0 / 0.35));
+}
+
+/* Background dos cards (enf/med) */
+.course__media--enf,
+.course__media--med {
+  background-image:
+    linear-gradient(135deg, rgb(12 15 20 / 0.55), rgb(12 15 20 / 0.25)),
+    url("./assets/logo/BG_1.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+/* Ajustes por trilha */
+.course__media--enf {
+  --course-logo-h: 264px;
+  --course-logo-y: 1px;
+  --course-logo-scale: 1.04;
+}
+
+.course__media--med {
+  --course-logo-h: 264px;
+  --course-logo-y: -1px;
+  --course-logo-scale: 1;
+}
+
 .course__media-title {
   margin: 0 0 6px;
   font-weight: 800;
@@ -1203,24 +1191,6 @@ body[data-page="med"] .section.hero {
   color: rgb(255 255 255 / 0.86);
   font-weight: 600;
   letter-spacing: 0.02em;
-}
-
-.course__media--enf {
-  background-image:
-    linear-gradient(135deg, rgb(12 15 20 / 0.55), rgb(12 15 20 / 0.25)),
-    url("./assets/logo/BG_1.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-}
-
-.course__media--med {
-  background-image:
-    linear-gradient(135deg, rgb(12 15 20 / 0.55), rgb(12 15 20 / 0.25)),
-    url("./assets/logo/BG_1.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
 }
 
 .course > :not(.course__media) {
@@ -1245,7 +1215,10 @@ body[data-page="med"] .section.hero {
   padding-bottom: var(--space-5);
 }
 
-/* Specialists */
+/* =========================================================
+   Specialists
+   ========================================================= */
+
 .specialist {
   padding: 0;
   overflow: hidden;
@@ -1271,7 +1244,10 @@ body[data-page="med"] .section.hero {
   font-weight: 600;
 }
 
-/* Manifesto */
+/* =========================================================
+   Manifesto
+   ========================================================= */
+
 .manifesto {
   display: flex;
   align-items: center;
@@ -1284,7 +1260,7 @@ body[data-page="med"] .section.hero {
   box-shadow: var(--shadow-soft);
 }
 
-.manifesto__logoWrap{
+.manifesto__logoWrap {
   width: 184px;
   height: 184px;
   border-radius: 999px;
@@ -1334,7 +1310,10 @@ body[data-page="med"] .section.hero {
   }
 }
 
-/* Callout */
+/* =========================================================
+   Callout
+   ========================================================= */
+
 .callout {
   border-radius: 26px;
   padding: clamp(24px, 3vw, 44px);
@@ -1390,7 +1369,10 @@ body[data-page="med"] .section.hero {
   }
 }
 
-/* Badges */
+/* =========================================================
+   Badges / Prose
+   ========================================================= */
+
 .badges {
   display: flex;
   flex-wrap: wrap;
@@ -1422,7 +1404,6 @@ body[data-page="med"] .section.hero {
   border-color: color-mix(in srgb, var(--warn) 16%, transparent);
 }
 
-/* Prose */
 .prose p {
   margin: 0 0 var(--space-3);
   color: var(--muted);
@@ -1565,7 +1546,10 @@ html[data-theme="light"] .input {
   text-shadow: 0 0 18px rgb(var(--brand-rgb) / 0.16);
 }
 
-/* CTA block */
+/* =========================================================
+   CTA block / Guarantee / Placeholder / Accordion
+   ========================================================= */
+
 .cta {
   display: grid;
   gap: var(--space-5);
@@ -1607,7 +1591,6 @@ html[data-theme="light"] .input {
   margin-top: var(--space-4);
 }
 
-/* Guarantee */
 .guarantee {
   display: grid;
   gap: 14px;
@@ -1634,7 +1617,6 @@ html[data-theme="light"] .input {
   box-shadow: var(--glow-brand);
 }
 
-/* Placeholder */
 .placeholder {
   display: flex;
   gap: 14px;
@@ -2283,11 +2265,13 @@ main > .section.section--split:nth-of-type(even),
   color: color-mix(in srgb, var(--text) 82%, transparent);
 }
 
-.section.section--split:nth-of-type(odd) :where(.media-card__title, .drawer__title, .brand, .nav__link, .accordion__trigger) {
+.section.section--split:nth-of-type(odd)
+  :where(.media-card__title, .drawer__title, .brand, .nav__link, .accordion__trigger) {
   color: var(--text);
 }
 
-.section.section--split:nth-of-type(odd) :where(.media-card__subtitle, .card__text, .section__subtitle, .muted, .cta__meta, .cta__price) {
+.section.section--split:nth-of-type(odd)
+  :where(.media-card__subtitle, .card__text, .section__subtitle, .muted, .cta__meta, .cta__price) {
   color: var(--muted);
 }
 
@@ -2303,7 +2287,8 @@ main > .section.section--split:nth-of-type(even),
   color: var(--text);
 }
 
-.section.section--split:nth-of-type(odd) :is(article p, article li, article a, .contact__items a, .link-row span) {
+.section.section--split:nth-of-type(odd)
+  :is(article p, article li, article a, .contact__items a, .link-row span) {
   color: var(--text);
 }
 
@@ -2323,8 +2308,7 @@ main > .section.section--split:nth-of-type(even),
 }
 
 /* =========================================================
-   Ticker / Marquee (entre HERO e seção seguinte)
-   Corrigido: sem sobreposição + fundo amarelo da paleta
+   Ticker / Marquee
    ========================================================= */
 
 .ticker {
@@ -2437,32 +2421,28 @@ main > .section.section--split:nth-of-type(even),
 /* =========================================================
    Mobile: centralizar seção Preço (enf + med)
    ========================================================= */
+
 @media (max-width: 720px) {
-  /* Centraliza toda a coluna da esquerda (textos) */
   #preco .cta__left {
     text-align: center;
   }
 
-  /* Centraliza blocos que têm max-width / fit-content */
   #preco .cta__left :is(.eyebrow, .cta__title, .cta__meta, .cta__price) {
     margin-left: auto;
     margin-right: auto;
   }
 
-  /* Centraliza o conjunto "De X por apenas" */
   #preco .cta__was {
     margin-left: auto;
     margin-right: auto;
     justify-content: center;
   }
 
-  /* Centraliza o preço grande */
   #preco .cta__now {
     margin-left: auto;
     margin-right: auto;
   }
 
-  /* Botões: centralizados e com largura boa */
   #preco .cta__actions {
     justify-content: center;
   }
@@ -2472,57 +2452,46 @@ main > .section.section--split:nth-of-type(even),
     max-width: 420px;
   }
 
-  /* Checklist do card da direita fica alinhada também */
   #preco .checklist {
-    text-align: left; /* mantém leitura boa */
+    text-align: left;
     margin-left: auto;
     margin-right: auto;
     max-width: 36ch;
   }
 }
 
-/* HERO (HOME): puxar apenas o texto um pouco mais para a esquerda */
-/* @media (min-width: 980px) {
-  body[data-page="home"] .section.hero .hero__content {
-    position: relative;
-    transform: translateX(clamp(-22px, -1.6vw, -46px));
-  }
-} */
+/* =========================================================
+   HERO: modo mobile com banner separado
+   ========================================================= */
 
 .hero__banner {
   display: none;
 }
 
 @media (max-width: 720px) {
-  /* no mobile: texto abaixo da imagem */
   .section.hero {
     min-height: unset;
     padding-top: 0;
     padding-bottom: var(--space-6);
   }
 
-  /* desliga background do hero inteiro */
   .section.hero::before,
   .section.hero::after {
     display: none;
   }
 
-  /* imagem full width */
   .hero__banner {
     display: block;
     width: 100vw;
     margin-left: calc(50% - 50vw);
     margin-right: calc(50% - 50vw);
-
     height: clamp(280px, 62vw, 520px);
-
     background-image: var(--hero-bg-mobile);
     background-repeat: no-repeat;
     background-position: var(--hero-pos-mobile, center top);
     background-size: cover;
   }
 
-  /* espaçamento para o conteúdo não colar na imagem */
   .section.hero .container {
     padding-top: var(--space-5);
   }
