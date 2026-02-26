@@ -1099,15 +1099,77 @@ body[data-page="med"] .section.hero {
   overflow: hidden;
 }
 
-.course__media {
+/* COURSES: mídia com logo centralizada e sem “cortar” no mobile */
+.course__media{
   position: relative;
   overflow: hidden;
   border-bottom: 0;
-  padding: 22px;
-  min-height: 140px;
-  display: grid;
-  align-items: end;
   background: var(--surface);
+
+  display: grid;
+  place-items: center;
+
+  padding: 22px;
+
+  /* Mantém o look no desktop */
+  aspect-ratio: 16 / 9;
+
+  /* Garante espaço suficiente para a logo (não reduz a imagem) */
+  min-height: calc(var(--course-logo-h, 264px) + 44px);
+}
+
+/* Mobile: deixa a altura livre para nunca cortar a logo */
+@media (max-width: 720px){
+  .course__media{
+    aspect-ratio: auto;
+    padding-block: 26px;
+    min-height: calc(var(--course-logo-h, 264px) + 52px);
+  }
+}
+
+/* Logo: tamanho fixo por variável, sem estourar o container */
+.course__media-logo{
+  height: var(--course-logo-h, 264px);
+  width: auto;
+  max-height: 100%;
+}
+
+.course__media--enf,
+.course__media--med{
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;          /* mesmo “crop” */
+}
+
+.course__media-inner--logo{
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+}
+
+/* padrão para qualquer logo */
+.course__media-logo{
+  height: var(--course-logo-h, 64px);
+  width: auto;
+  max-width: 82%;
+  object-fit: contain;
+  transform: translateY(var(--course-logo-y, 0px)) scale(var(--course-logo-scale, 1));
+  filter: drop-shadow(0 12px 24px rgb(0 0 0 / 0.35));
+}
+
+/* Enf: exemplo, aumenta um pouco e desce 1px */
+.course__media--enf{
+  --course-logo-h: 264px;
+  --course-logo-y: 1px;
+  --course-logo-scale: 1.04;
+}
+
+/* Med: exemplo, mantém e sobe 1px */
+.course__media--med{
+  --course-logo-h: 264px;
+  --course-logo-y: -1px;
+  --course-logo-scale: 1;
 }
 
 .course__media::before {
@@ -1144,17 +1206,21 @@ body[data-page="med"] .section.hero {
 }
 
 .course__media--enf {
-  background:
-    radial-gradient(800px 360px at 18% 20%, rgb(var(--warn-rgb) / 0.30), transparent 60%),
-    radial-gradient(700px 320px at 88% 70%, rgb(var(--brand2-rgb) / 0.14), transparent 62%),
-    linear-gradient(135deg, color-mix(in srgb, var(--brand) 92%, #000), color-mix(in srgb, var(--brand-2) 72%, var(--bg)));
+  background-image:
+    linear-gradient(135deg, rgb(12 15 20 / 0.55), rgb(12 15 20 / 0.25)),
+    url("./assets/logo/BG_1.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 .course__media--med {
-  background:
-    radial-gradient(800px 360px at 18% 20%, rgb(var(--brand-rgb) / 0.28), transparent 60%),
-    radial-gradient(700px 320px at 88% 70%, rgb(var(--brand2-rgb) / 0.14), transparent 62%),
-    linear-gradient(135deg, color-mix(in srgb, var(--brand) 92%, #000), color-mix(in srgb, var(--brand-2) 64%, var(--bg)));
+  background-image:
+    linear-gradient(135deg, rgb(12 15 20 / 0.55), rgb(12 15 20 / 0.25)),
+    url("./assets/logo/BG_1.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 .course > :not(.course__media) {
@@ -1218,31 +1284,29 @@ body[data-page="med"] .section.hero {
   box-shadow: var(--shadow-soft);
 }
 
-.manifesto__logoWrap {
+.manifesto__logoWrap{
   width: 184px;
   height: 184px;
   border-radius: 999px;
   overflow: hidden;
   position: relative;
-  background:
-    radial-gradient(circle at 30% 30%, rgb(var(--brand-rgb) / 0.16), transparent 62%),
-    radial-gradient(circle at 70% 70%, rgb(var(--brand2-rgb) / 0.10), transparent 64%),
-    linear-gradient(
-      135deg,
-      color-mix(in srgb, var(--brand) 70%, #000),
-      color-mix(in srgb, var(--brand-2) 30%, var(--split-light-bg))
-    );
-  border: 1px solid color-mix(in srgb, var(--border) 82%, transparent);
-  box-shadow: 0 10px 28px rgb(12 15 20 / 0.10);
   display: grid;
   place-items: center;
+  border: 1px solid color-mix(in srgb, var(--border) 82%, transparent);
+  box-shadow: 0 10px 28px rgb(12 15 20 / 0.10);
+
+  background-image:
+    linear-gradient(135deg, rgb(12 15 20 / 0.55), rgb(12 15 20 / 0.25)),
+    url("./assets/logo/BG_1.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 .manifesto__logo {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  padding: 18px;
   border-radius: 999px;
   filter: drop-shadow(0 10px 22px rgb(0 0 0 / 0.25));
 }
