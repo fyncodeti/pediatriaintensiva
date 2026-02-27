@@ -2591,3 +2591,41 @@ main > .section.section--split:nth-of-type(even),
   object-fit: contain;
   filter: drop-shadow(0 10px 18px rgb(0 0 0 / 0.18));
 }
+
+/* Bloco das imagens (tarja + pagamentos) no CTA */
+.cta__trustbar {
+  display: grid;
+  gap: 12px;
+  justify-items: center;
+  margin: 6px auto var(--space-3);
+}
+
+.cta__trustbar-img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+  filter: drop-shadow(0 10px 18px rgb(0 0 0 / 0.18));
+}
+
+/* Ajuste fino de largura (pra ficar parecido com sua referência) */
+.cta__trustbar-img--security {
+  width: min(560px, 100%);
+}
+
+.cta__trustbar-img--payments {
+  width: min(460px, 100%);
+  opacity: 0.95;
+}
+
+/* "sr-only" para esconder só visualmente */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
