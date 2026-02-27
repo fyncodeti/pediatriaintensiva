@@ -679,7 +679,7 @@ html[data-theme="light"] .section--muted::before {
 /* desktop */
 @media (min-width: 721px) {
   .section.hero {
-    height: clamp(620px, 72vh, 860px); /* altura fixa */
+    height: clamp(720px, 72vh, 860px); /* altura fixa */
     min-height: unset;
   }
 
@@ -2583,4 +2583,19 @@ main > .section.section--split:nth-of-type(even),
 #preco .cta__actions .btn {
   width: 100%;
   max-width: 420px;
+}
+
+.hero__logo {
+  width: clamp(140px, 16vw, 220px);
+  height: auto;
+  display: block;
+  margin: 0 0 var(--space-3);
+  filter: drop-shadow(0 12px 22px rgb(0 0 0 / 0.35));
+}
+
+@media (max-width: 720px) {
+  .hero__logo {
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
