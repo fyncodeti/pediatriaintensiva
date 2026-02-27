@@ -2500,3 +2500,39 @@ main > .section.section--split:nth-of-type(even),
     gap: var(--space-5);
   }
 }
+
+/* =========================================================
+   Depoimentos - somente imagens em colunas (sem cards)
+   ========================================================= */
+
+.testimonials__columns {
+  column-count: 1;
+  column-gap: var(--space-4);
+}
+
+@media (min-width: 720px) {
+  .testimonials__columns {
+    column-count: 2; /* esquerda e direita */
+  }
+}
+
+/* Imagens em colunas: evitar quebra estranha */
+.testimonials__columns .testimonials__img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 0 var(--space-4);
+  break-inside: avoid;
+  page-break-inside: avoid;
+
+  /* sem “card”, só um acabamento leve */
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--bg) 80%, transparent);
+}
+
+/* Hover bem sutil (opcional, pode remover) */
+.testimonials__columns .testimonials__img:hover {
+  transform: translateY(-1px);
+  transition: transform 160ms ease;
+}
