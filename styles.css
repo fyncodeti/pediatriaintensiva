@@ -676,6 +676,24 @@ html[data-theme="light"] .section--muted::before {
   --hero-pos-active: var(--hero-pos);
 }
 
+/* desktop */
+@media (min-width: 721px) {
+  .section.hero {
+    height: clamp(620px, 72vh, 860px); /* altura fixa */
+    min-height: unset;
+  }
+
+  .section.hero .container {
+    height: 100%;
+    display: flex;
+    align-items: center; /* centraliza o conteúdo verticalmente */
+  }
+
+  .section.hero .hero__grid {
+    width: 100%;
+  }
+}
+
 .section.hero::before {
   content: "";
   position: absolute;
