@@ -2550,3 +2550,37 @@ main > .section.section--split:nth-of-type(even),
   transform: translateY(-1px);
   transition: transform 160ms ease;
 }
+
+/* Centralizar tudo do lado esquerdo do preço (desktop + mobile) */
+#preco .cta__left {
+  text-align: center;
+}
+
+/* Centraliza os blocos e limita largura para ficar bonito */
+#preco .cta__left :is(.eyebrow, .cta__title, .cta__meta, .cta__price, .cta__price--strong) {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Centraliza os pedaços internos do preço */
+#preco .cta__was {
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+}
+
+#preco .cta__now {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Centraliza os botões */
+#preco .cta__actions {
+  justify-content: center;
+}
+
+/* Opcional: deixar os botões com largura consistente */
+#preco .cta__actions .btn {
+  width: 100%;
+  max-width: 420px;
+}
