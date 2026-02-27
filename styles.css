@@ -1287,9 +1287,7 @@ body[data-page="med"] .section.hero {
   border: 1px solid color-mix(in srgb, var(--border) 82%, transparent);
   box-shadow: 0 10px 28px rgb(12 15 20 / 0.10);
 
-  background-image:
-    linear-gradient(135deg, rgb(12 15 20 / 0.55), rgb(12 15 20 / 0.25)),
-    url("./assets/logo/BG_1.png");
+  background-image: url("./assets/logo/BG_1.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
