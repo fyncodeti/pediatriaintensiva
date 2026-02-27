@@ -768,7 +768,7 @@ html[data-theme="light"] .section--muted::before {
 /* Paleta de hero por página */
 body[data-page="home"] .section.hero {
   --hero-bg: url("./assets/img/bg/home_1.png");
-  --hero-bg-mobile: url("./assets/img/bg/home_1080_x_1920.svg");
+  --hero-bg-mobile: url("./assets/img/bg/HOME_MOBILE.svg");
   --hero-bg-xl: url("./assets/img/bg/home_2560_x_1440_1.png");
   --hero-pos: center;
   --hero-pos-mobile: center top;
@@ -2490,6 +2490,12 @@ main > .section.section--split:nth-of-type(even),
     background-size: cover;
   }
 
+  @media (max-width: 720px) {
+  .hero__banner {
+    height: clamp(240px, 80vw, 640px);
+  }
+}
+
   .section.hero .container {
     padding-top: var(--space-5);
   }
@@ -2581,6 +2587,7 @@ main > .section.section--split:nth-of-type(even),
   .hero__logo {
     margin-left: auto;
     margin-right: auto;
+    display: none;
   }
 }
 
