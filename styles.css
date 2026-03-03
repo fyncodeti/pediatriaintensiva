@@ -2636,3 +2636,33 @@ main > .section.section--split:nth-of-type(even),
   white-space: nowrap !important;
   border: 0 !important;
 }
+
+/* Garantia: selo central em cima + texto abaixo (maior) */
+.guarantee {
+  grid-template-columns: 1fr; /* antes: auto 1fr */
+  justify-items: center;
+  text-align: center;
+}
+
+.guarantee__icon {
+  width: clamp(186px, 10vw, 228px);  /* aumenta o container */
+  height: clamp(186px, 10vw, 228px);
+  border-radius: 22px;             /* mantém premium */
+  margin-bottom: var(--space-3);
+}
+
+.guarantee__seal {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Opcional: limitar largura do texto pra ficar bonito */
+.guarantee > div:last-child {
+  max-width: 72ch;
+}
+
+/* Opcional: deixar o subtítulo um pouco maior */
+.guarantee .section__subtitle {
+  font-size: var(--fs-2);
+}
