@@ -767,25 +767,25 @@ html[data-theme="light"] .section--muted::before {
 
 /* Paleta de hero por página */
 body[data-page="home"] .section.hero {
-  --hero-bg: url("./assets/img/bg/home_1.png");
+  --hero-bg: url("./assets/img/bg/HOME_DESKTOP.svg");
   --hero-bg-mobile: url("./assets/img/bg/HOME_MOBILE.svg");
-  --hero-bg-xl: url("./assets/img/bg/home_2560_x_1440_1.png");
+  --hero-bg-xl: url("./assets/img/bg/HOME_DESKTOP.svg");
   --hero-pos: center;
   --hero-pos-mobile: center top;
 }
 
 body[data-page="enf"] .section.hero {
-  --hero-bg: url("./assets/img/bg/pedin_enf_1.png");
+  --hero-bg: url("./assets/img/bg/PedIn_Enf_Desktop.svg");
   --hero-bg-mobile: url("./assets/img/bg/PEDIN_ENF_MOBILE.svg");
-  --hero-bg-xl: url("./assets/img/bg/pedin_enf_2560_x_1440_1.png");
+  --hero-bg-xl: url("./assets/img/bg/PedIn_Enf_Desktop.svg");
   --hero-pos: center 35%;
   --hero-pos-mobile: center top;
 }
 
 body[data-page="med"] .section.hero {
-  --hero-bg: url("./assets/img/bg/pedin_1.png");
+  --hero-bg: url("./assets/img/bg/PEDIN_DESKTOP.svg");
   --hero-bg-mobile: url("./assets/img/bg/PEDIN_MOBILE.svg");
-  --hero-bg-xl: url("./assets/img/bg/pedin_2560_x_1440_1.png");
+  --hero-bg-xl: url("./assets/img/bg/PEDIN_DESKTOP.svg");
   --hero-pos: center 30%;
   --hero-pos-mobile: center top;
 }
@@ -2492,7 +2492,7 @@ main > .section.section--split:nth-of-type(even),
 
   @media (max-width: 720px) {
   .hero__banner {
-    height: clamp(340px, 80vw, 640px);
+    height: clamp(390px, 80vw, 640px);
   }
 }
 
