@@ -2492,7 +2492,7 @@ main > .section.section--split:nth-of-type(even),
 
   @media (max-width: 720px) {
   .hero__banner {
-    height: clamp(390px, 80vw, 640px);
+    height: clamp(240px, 80vw, 640px);
   }
 }
 
