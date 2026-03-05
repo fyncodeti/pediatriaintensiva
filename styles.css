@@ -2670,3 +2670,38 @@ main > .section.section--split:nth-of-type(even),
 .guarantee .section__subtitle {
   font-size: var(--fs-2);
 }
+
+/* =========================================================
+   HERO (mobile): degradê no topo do primeiro container
+   ========================================================= */
+
+@media (max-width: 720px) {
+  .section.hero .container {
+    position: relative;
+  }
+
+  /* Degradê que nasce no topo do container e some para baixo */
+  .section.hero .container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: calc(50% - 50vw);
+    width: 100vw;
+    height: 32px; /* ajuste a altura do degradê */
+    pointer-events: none;
+    z-index: 1;
+
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.85) 0%,
+      rgb(12 15 20 / 0.35) 45%,
+      transparent 100%
+    );
+  }
+
+  /* Garante que o conteúdo fique acima do degradê */
+  .section.hero .container > * {
+    position: relative;
+    z-index: 2;
+  }
+}
