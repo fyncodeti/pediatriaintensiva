@@ -2494,6 +2494,10 @@ main > .section.section--split:nth-of-type(even),
   .hero__banner {
     height: clamp(240px, 80vw, 640px);
   }
+
+  .hero--course .hero__banner {
+    height: clamp(316px, 80vw, 640px);
+  }
 }
 
   .section.hero .container {
