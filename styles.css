@@ -2687,7 +2687,7 @@ main > .section.section--split:nth-of-type(even),
     top: 0;
     left: calc(50% - 50vw);
     width: 100vw;
-    height: 32px; /* ajuste a altura do degradê */
+    height: 42px; /* ajuste a altura do degradê */
     pointer-events: none;
     z-index: 1;
 
