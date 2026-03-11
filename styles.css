@@ -1149,49 +1149,62 @@ body[data-page="med"] .section.hero {
   filter: blur(1px);
 }
 
-.course__media-inner {
-  position: relative;
-  z-index: 1;
+.course {
+  padding: 0;
+  overflow: hidden;
 }
 
-.course__media-inner--logo {
+.course__media {
+  position: relative;
+  overflow: hidden;
+  border-bottom: 0;
+  background: transparent;
+  padding: 0;
+  aspect-ratio: 16 / 9;
+}
+
+.course__media::before {
+  display: none;
+}
+
+.course__media-cardimg {
   width: 100%;
   height: 100%;
-  display: grid;
-  place-items: center;
+  display: block;
+  object-fit: cover;
 }
 
-/* Logo (unificado, preservando o resultado final) */
-.course__media-logo {
-  height: var(--course-logo-h, 64px);
-  width: auto;
-  max-width: 82%;
-  max-height: 100%;
-  object-fit: contain;
-  transform: translateY(var(--course-logo-y, 0px)) scale(var(--course-logo-scale, 1));
-  filter: drop-shadow(0 12px 24px rgb(0 0 0 / 0.35));
+.course > :not(.course__media) {
+  padding-left: var(--space-5);
+  padding-right: var(--space-5);
 }
 
-/* Background dos cards (enf/med) */
-.course__media--enf,
-.course__media--med {
-  background-image: url("./assets/logo/BG_1.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+.course__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+  padding-top: var(--space-5);
 }
 
-/* Ajustes por trilha */
-.course__media--enf {
-  --course-logo-h: 264px;
-  --course-logo-y: 1px;
-  --course-logo-scale: 1.04;
+.course__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: var(--space-4);
+  padding-bottom: var(--space-5);
 }
 
-.course__media--med {
-  --course-logo-h: 264px;
-  --course-logo-y: -1px;
-  --course-logo-scale: 1;
+@media (max-width: 720px) {
+  .course__media {
+    aspect-ratio: auto;
+  }
+
+  .course__media-cardimg {
+    height: auto;
+    object-fit: contain;
+  }
 }
 
 .course__media-title {
