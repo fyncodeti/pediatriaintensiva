@@ -1114,46 +1114,6 @@ body[data-page="med"] .section.hero {
   overflow: hidden;
 }
 
-/* Mídia (logo centralizada e sem cortar no mobile) */
-.course__media {
-  position: relative;
-  overflow: hidden;
-  border-bottom: 0;
-  background: var(--surface);
-
-  display: grid;
-  place-items: center;
-  padding: 22px;
-
-  aspect-ratio: 16 / 9;
-  min-height: calc(var(--course-logo-h, 264px) + 44px);
-}
-
-@media (max-width: 720px) {
-  .course__media {
-    aspect-ratio: auto;
-    padding-block: 26px;
-    min-height: calc(var(--course-logo-h, 264px) + 52px);
-  }
-}
-
-.course__media::before {
-  content: "";
-  position: absolute;
-  inset: -40%;
-  pointer-events: none;
-  background:
-    radial-gradient(circle at 18% 25%, rgb(255 255 255 / 0.18), transparent 60%),
-    radial-gradient(circle at 80% 70%, rgb(255 255 255 / 0.1), transparent 62%);
-  opacity: 0.6;
-  filter: blur(1px);
-}
-
-.course {
-  padding: 0;
-  overflow: hidden;
-}
-
 .course__media {
   position: relative;
   overflow: hidden;
@@ -1198,51 +1158,20 @@ body[data-page="med"] .section.hero {
 
 @media (max-width: 720px) {
   .course__media {
-    aspect-ratio: auto;
+    aspect-ratio: unset;
+    min-height: unset;
+    height: auto;
   }
 
   .course__media-cardimg {
+    width: 100%;
     height: auto;
     object-fit: contain;
   }
-}
 
-.course__media-title {
-  margin: 0 0 6px;
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  line-height: 1.05;
-  font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.2rem);
-  color: #fff;
-}
-
-.course__media-subtitle {
-  margin: 0;
-  color: rgb(255 255 255 / 0.86);
-  font-weight: 600;
-  letter-spacing: 0.02em;
-}
-
-.course > :not(.course__media) {
-  padding-left: var(--space-5);
-  padding-right: var(--space-5);
-}
-
-.course__top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-3);
-  margin-bottom: var(--space-3);
-  padding-top: var(--space-5);
-}
-
-.course__actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: var(--space-4);
-  padding-bottom: var(--space-5);
+  .course__top {
+    padding-top: 18px;
+  }
 }
 
 /* =========================================================
