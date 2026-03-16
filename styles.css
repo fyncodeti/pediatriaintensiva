@@ -2647,3 +2647,33 @@ main > .section.section--split:nth-of-type(even),
     z-index: 2;
   }
 }
+
+.course__media picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.course__media-cardimg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+@media (max-width: 720px) {
+  .course__media {
+    aspect-ratio: unset;
+    min-height: unset;
+    height: auto;
+  }
+
+  .course__media picture,
+  .course__media-cardimg {
+    height: auto;
+  }
+
+  .course__media-cardimg {
+    object-fit: contain;
+  }
+}
