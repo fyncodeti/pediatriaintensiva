@@ -259,3 +259,19 @@
   }
 })();
 
+document.addEventListener('DOMContentLoaded', () => {
+  const wrappers = document.querySelectorAll('.video-wrapper');
+  wrappers.forEach(wrapper => {
+    const video = wrapper.querySelector('video');
+    const overlay = wrapper.querySelector('.play-overlay');
+    overlay.addEventListener('click', () => {
+      overlay.style.opacity = '0';
+      overlay.style.pointerEvents = 'none';
+      video.play().catch(e => console.log('Play failed:', e));
+    });
+    video.addEventListener('ended', () => {
+      overlay.style.opacity = '1';
+      overlay.style.pointerEvents = 'auto';
+    });
+  });
+});
